@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Zarplata" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ROMANNB-ПК;Initial Catalog=Zarplata;Integrated Security=True" SettingsObjectName="Зарплата.Properties.Settings" SettingsPropertyName="ZarplataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Remont" Member="Remont">
+    <Type Name="Remont">
+      <Column Name="Remont_num" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Zapros" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Filial" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Klient" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Truck_model" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Prichina" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ZNR_Date_Open" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ZNR_Date_Close" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Summa_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Summa_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Summa_rashod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FOT_analise" Member="FOT_analise">
+    <Type Name="FOT_analise">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Period" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Remont" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Truck" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Klient" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Summa_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Summa_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Summa_rashod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_prod_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_prod_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_brigad_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_brigad_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_oform_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_oform_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_mehan_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_mehan_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FOT_mehan_rashod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Davnost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_prod_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_prod_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_brigad_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_brigad_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_oform_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_oform_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_mehan_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Percent_mehan_rashod" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bonus_za_ZNR" Member="Bonus_za_ZNR">
+    <Type Name="Bonus_za_ZNR">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dolzhnost" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Filial" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Zapros" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Remont" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sum_klient" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Sum_TSK" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KTU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Davnost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Srok" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="[Percent]" Member="Percent" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Motivation" Member="Motivation">
+    <Type Name="Motivation">
+      <Column Name="kurator_fio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="kurator_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="kurator_filial" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="prod_count" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="plan_viezd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="fact_viezd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="fact_viezd_max" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="plan_zvonok" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="fact_zvonok" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="plan_smeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="fact_smeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="fact_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="plan_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="net_od" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="debitora" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="mehan_count" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="virabotka" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="vnutr_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stavki" Member="Stavki">
+    <Type Name="Stavki">
+      <Column Name="Tab_num" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="FIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Oklad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.crm_max" Member="crm_max">
+    <Type Name="crm_max">
+      <Column Name="Tab_num" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Filial" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="viezd_vsego" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="viezd_pers" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
