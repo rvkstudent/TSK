@@ -1254,7 +1254,7 @@ namespace Зарплата
             // Зарплата
 
 
-            MessageBox.Show("");
+           // MessageBox.Show("");
 
             //Создаем workbook
             var workbook1 = new XLWorkbook();
