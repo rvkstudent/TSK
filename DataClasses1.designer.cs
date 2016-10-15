@@ -118,6 +118,14 @@ namespace Зарплата
 				return this.GetTable<crm_max>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Test_1> Test_1
+		{
+			get
+			{
+				return this.GetTable<Test_1>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Remont")]
@@ -2016,6 +2024,555 @@ namespace Зарплата
 				if ((this._viezd_pers != value))
 				{
 					this._viezd_pers = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50)")]
+		public string Period
+		{
+			get
+			{
+				return this._Period;
+			}
+			set
+			{
+				if ((this._Period != value))
+				{
+					this._Period = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Test_1")]
+	public partial class Test_1
+	{
+		
+		private System.Nullable<long> _Remont_num;
+		
+		private string _Klient;
+		
+		private string _Truck;
+		
+		private System.Nullable<System.DateTime> _Data_zakr_ZO;
+		
+		private System.Nullable<System.DateTime> _Data_zakr_ZNR;
+		
+		private string _Prichina;
+		
+		private System.Nullable<double> _Davnost;
+		
+		private string _Premia_PP;
+		
+		private System.Nullable<double> _Summa_trud;
+		
+		private System.Nullable<double> _Summa_rashod;
+		
+		private System.Nullable<double> _Summa_mat;
+		
+		private System.Nullable<double> _ZP_prod_trud;
+		
+		private System.Nullable<double> _ZP_prod_mat;
+		
+		private System.Nullable<double> _ZP_brigad_trud;
+		
+		private System.Nullable<double> _ZP_brigad_mat;
+		
+		private System.Nullable<double> _ZP_meh_trud_zakr;
+		
+		private System.Nullable<double> _ZP_meh_rashod_zakr;
+		
+		private System.Nullable<double> _ZP_meh_trud_dok;
+		
+		private System.Nullable<double> _ZP_meh_rashod_doc;
+		
+		private System.Nullable<double> _ZP_oform_mat;
+		
+		private System.Nullable<double> _ZP_oform_trud;
+		
+		private System.Nullable<double> _Procent_prod_mat;
+		
+		private System.Nullable<double> _Procent_prod_trud;
+		
+		private System.Nullable<double> _Procent_brigad_trud;
+		
+		private System.Nullable<double> _Procent_brigad_mat;
+		
+		private System.Nullable<double> _Procent_meh_trud_zakr;
+		
+		private System.Nullable<double> _Procent_meh_trud_doc;
+		
+		private System.Nullable<double> _Procent_oform_mat;
+		
+		private System.Nullable<double> _Procent_oform_trud;
+		
+		private string _Period;
+		
+		public Test_1()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remont_num", DbType="BigInt")]
+		public System.Nullable<long> Remont_num
+		{
+			get
+			{
+				return this._Remont_num;
+			}
+			set
+			{
+				if ((this._Remont_num != value))
+				{
+					this._Remont_num = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Klient", DbType="NVarChar(MAX)")]
+		public string Klient
+		{
+			get
+			{
+				return this._Klient;
+			}
+			set
+			{
+				if ((this._Klient != value))
+				{
+					this._Klient = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Truck", DbType="NVarChar(50)")]
+		public string Truck
+		{
+			get
+			{
+				return this._Truck;
+			}
+			set
+			{
+				if ((this._Truck != value))
+				{
+					this._Truck = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_zakr_ZO", DbType="Date")]
+		public System.Nullable<System.DateTime> Data_zakr_ZO
+		{
+			get
+			{
+				return this._Data_zakr_ZO;
+			}
+			set
+			{
+				if ((this._Data_zakr_ZO != value))
+				{
+					this._Data_zakr_ZO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_zakr_ZNR", DbType="Date")]
+		public System.Nullable<System.DateTime> Data_zakr_ZNR
+		{
+			get
+			{
+				return this._Data_zakr_ZNR;
+			}
+			set
+			{
+				if ((this._Data_zakr_ZNR != value))
+				{
+					this._Data_zakr_ZNR = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prichina", DbType="NVarChar(MAX)")]
+		public string Prichina
+		{
+			get
+			{
+				return this._Prichina;
+			}
+			set
+			{
+				if ((this._Prichina != value))
+				{
+					this._Prichina = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Davnost", DbType="Float")]
+		public System.Nullable<double> Davnost
+		{
+			get
+			{
+				return this._Davnost;
+			}
+			set
+			{
+				if ((this._Davnost != value))
+				{
+					this._Davnost = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Premia_PP", DbType="NChar(10)")]
+		public string Premia_PP
+		{
+			get
+			{
+				return this._Premia_PP;
+			}
+			set
+			{
+				if ((this._Premia_PP != value))
+				{
+					this._Premia_PP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Summa_trud", DbType="Float")]
+		public System.Nullable<double> Summa_trud
+		{
+			get
+			{
+				return this._Summa_trud;
+			}
+			set
+			{
+				if ((this._Summa_trud != value))
+				{
+					this._Summa_trud = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Summa_rashod", DbType="Float")]
+		public System.Nullable<double> Summa_rashod
+		{
+			get
+			{
+				return this._Summa_rashod;
+			}
+			set
+			{
+				if ((this._Summa_rashod != value))
+				{
+					this._Summa_rashod = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Summa_mat", DbType="Float")]
+		public System.Nullable<double> Summa_mat
+		{
+			get
+			{
+				return this._Summa_mat;
+			}
+			set
+			{
+				if ((this._Summa_mat != value))
+				{
+					this._Summa_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_prod_trud", DbType="Float")]
+		public System.Nullable<double> ZP_prod_trud
+		{
+			get
+			{
+				return this._ZP_prod_trud;
+			}
+			set
+			{
+				if ((this._ZP_prod_trud != value))
+				{
+					this._ZP_prod_trud = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_prod_mat", DbType="Float")]
+		public System.Nullable<double> ZP_prod_mat
+		{
+			get
+			{
+				return this._ZP_prod_mat;
+			}
+			set
+			{
+				if ((this._ZP_prod_mat != value))
+				{
+					this._ZP_prod_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_brigad_trud", DbType="Float")]
+		public System.Nullable<double> ZP_brigad_trud
+		{
+			get
+			{
+				return this._ZP_brigad_trud;
+			}
+			set
+			{
+				if ((this._ZP_brigad_trud != value))
+				{
+					this._ZP_brigad_trud = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_brigad_mat", DbType="Float")]
+		public System.Nullable<double> ZP_brigad_mat
+		{
+			get
+			{
+				return this._ZP_brigad_mat;
+			}
+			set
+			{
+				if ((this._ZP_brigad_mat != value))
+				{
+					this._ZP_brigad_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_meh_trud_zakr", DbType="Float")]
+		public System.Nullable<double> ZP_meh_trud_zakr
+		{
+			get
+			{
+				return this._ZP_meh_trud_zakr;
+			}
+			set
+			{
+				if ((this._ZP_meh_trud_zakr != value))
+				{
+					this._ZP_meh_trud_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_meh_rashod_zakr", DbType="Float")]
+		public System.Nullable<double> ZP_meh_rashod_zakr
+		{
+			get
+			{
+				return this._ZP_meh_rashod_zakr;
+			}
+			set
+			{
+				if ((this._ZP_meh_rashod_zakr != value))
+				{
+					this._ZP_meh_rashod_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_meh_trud_dok", DbType="Float")]
+		public System.Nullable<double> ZP_meh_trud_dok
+		{
+			get
+			{
+				return this._ZP_meh_trud_dok;
+			}
+			set
+			{
+				if ((this._ZP_meh_trud_dok != value))
+				{
+					this._ZP_meh_trud_dok = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_meh_rashod_doc", DbType="Float")]
+		public System.Nullable<double> ZP_meh_rashod_doc
+		{
+			get
+			{
+				return this._ZP_meh_rashod_doc;
+			}
+			set
+			{
+				if ((this._ZP_meh_rashod_doc != value))
+				{
+					this._ZP_meh_rashod_doc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_oform_mat", DbType="Float")]
+		public System.Nullable<double> ZP_oform_mat
+		{
+			get
+			{
+				return this._ZP_oform_mat;
+			}
+			set
+			{
+				if ((this._ZP_oform_mat != value))
+				{
+					this._ZP_oform_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_oform_trud", DbType="Float")]
+		public System.Nullable<double> ZP_oform_trud
+		{
+			get
+			{
+				return this._ZP_oform_trud;
+			}
+			set
+			{
+				if ((this._ZP_oform_trud != value))
+				{
+					this._ZP_oform_trud = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_prod_mat", DbType="Float")]
+		public System.Nullable<double> Procent_prod_mat
+		{
+			get
+			{
+				return this._Procent_prod_mat;
+			}
+			set
+			{
+				if ((this._Procent_prod_mat != value))
+				{
+					this._Procent_prod_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_prod_trud", DbType="Float")]
+		public System.Nullable<double> Procent_prod_trud
+		{
+			get
+			{
+				return this._Procent_prod_trud;
+			}
+			set
+			{
+				if ((this._Procent_prod_trud != value))
+				{
+					this._Procent_prod_trud = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_brigad_trud", DbType="Float")]
+		public System.Nullable<double> Procent_brigad_trud
+		{
+			get
+			{
+				return this._Procent_brigad_trud;
+			}
+			set
+			{
+				if ((this._Procent_brigad_trud != value))
+				{
+					this._Procent_brigad_trud = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_brigad_mat", DbType="Float")]
+		public System.Nullable<double> Procent_brigad_mat
+		{
+			get
+			{
+				return this._Procent_brigad_mat;
+			}
+			set
+			{
+				if ((this._Procent_brigad_mat != value))
+				{
+					this._Procent_brigad_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_meh_trud_zakr", DbType="Float")]
+		public System.Nullable<double> Procent_meh_trud_zakr
+		{
+			get
+			{
+				return this._Procent_meh_trud_zakr;
+			}
+			set
+			{
+				if ((this._Procent_meh_trud_zakr != value))
+				{
+					this._Procent_meh_trud_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_meh_trud_doc", DbType="Float")]
+		public System.Nullable<double> Procent_meh_trud_doc
+		{
+			get
+			{
+				return this._Procent_meh_trud_doc;
+			}
+			set
+			{
+				if ((this._Procent_meh_trud_doc != value))
+				{
+					this._Procent_meh_trud_doc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_oform_mat", DbType="Float")]
+		public System.Nullable<double> Procent_oform_mat
+		{
+			get
+			{
+				return this._Procent_oform_mat;
+			}
+			set
+			{
+				if ((this._Procent_oform_mat != value))
+				{
+					this._Procent_oform_mat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Procent_oform_trud", DbType="Float")]
+		public System.Nullable<double> Procent_oform_trud
+		{
+			get
+			{
+				return this._Procent_oform_trud;
+			}
+			set
+			{
+				if ((this._Procent_oform_trud != value))
+				{
+					this._Procent_oform_trud = value;
 				}
 			}
 		}

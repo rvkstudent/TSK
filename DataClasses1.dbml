@@ -105,4 +105,38 @@
       <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Test_1" Member="Test_1">
+    <Type Name="Test_1">
+      <Column Name="Remont_num" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Klient" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Truck" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Data_zakr_ZO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Data_zakr_ZNR" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Prichina" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Davnost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Premia_PP" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Summa_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Summa_rashod" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Summa_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_prod_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_prod_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_brigad_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_brigad_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_meh_trud_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_meh_rashod_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_meh_trud_dok" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_meh_rashod_doc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_oform_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_oform_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_prod_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_prod_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_brigad_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_brigad_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_meh_trud_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_meh_trud_doc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_oform_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Procent_oform_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

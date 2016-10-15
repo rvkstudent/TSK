@@ -42,25 +42,36 @@ namespace Зарплата
 
             System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "DELETE FROM [dbo].[" + TableName + "] WHERE Period ='" + Period + "';";
-            cmd.CommandText = cmd.CommandText + "DELETE FROM [dbo].[" + TableName + "] WHERE Period IS NULL;";
+
             cmd.Connection = sqlConnection1;
 
             sqlConnection1.Open();
 
-            try
-            {
-                TableRowsCount =  cmd.ExecuteNonQuery();
-            }
-            catch (System.Data.SqlClient.SqlException e)
-            {
-                MessageBox.Show(e.Message.ToString());
-                TableRowsCount = 0;
-            }
+            if (TableName != "Zakr")
+            { 
+            cmd.CommandText = "DELETE FROM [dbo].[" + TableName + "] WHERE Period ='" + Period + "';";
+            cmd.CommandText = cmd.CommandText + "DELETE FROM [dbo].[" + TableName + "] WHERE Period IS NULL;";
 
-            string[] tempString = new string[10]; 
-            double[] tempDouble =  new double[10];
-            Int32[] tempInt = new Int32[10];
+               
+
+                try
+                {
+                    TableRowsCount = cmd.ExecuteNonQuery();
+                }
+                catch (System.Data.SqlClient.SqlException e)
+                {
+                    MessageBox.Show(e.Message.ToString());
+                    TableRowsCount = 0;
+                }
+
+            }
+            
+
+            
+
+            string[] tempString = new string[20]; 
+            double[] tempDouble =  new double[20];
+            Int32[] tempInt = new Int32[20];
 
             String rows = "(";
             String values = "(";
@@ -121,6 +132,32 @@ namespace Зарплата
 
                         values = values + tempDouble[j].ToString().Replace(",", ".");
                     }
+                    if (rowType[j] == "zp_float")
+                    {
+
+                        if (Double.TryParse(ws.Cell(i, XLRows[j]).Value.ToString().Substring(2), style, culture, out tempDouble[j]) == true)
+                            tempDouble[j] = Convert.ToDouble(String.Format("{0:f}", tempDouble[j]));
+
+                         else
+                            tempDouble[j] = 0;
+
+                        values = values + tempDouble[j].ToString().Replace(",", ".");
+                    }
+
+                    if (rowType[j] == "ktu_float")
+                    {
+
+                        if (Double.TryParse(ws.Cell(i, XLRows[j]).Value.ToString().Replace(",", "."), style, culture, out tempDouble[j]) == true)
+                            tempDouble[j] = Convert.ToDouble(String.Format("{0:f}", tempDouble[j]));
+                        else
+                            tempDouble[j] = 1;
+
+                        if(tempDouble[j]>1 || tempDouble[j]==0 || ws.Cell(i, XLRows[j-1]).Value.ToString().Contains("Механ") == true)
+                            tempDouble[j] = 1;
+
+                        values = values + tempDouble[j].ToString().Replace(",", ".");
+                    }
+
                     if (rowType[j] == "int")
                     {
 
@@ -165,9 +202,17 @@ namespace Зарплата
                    
 
                 }
-                rows = rows + ",Period)";
-                values = values + ",'" + Period + "')";
 
+                if (TableName != "Zakr")
+                { 
+                    rows = rows + ",Period)";
+                values = values + ",'" + Period + "')";
+                }
+                else
+                {
+                    rows = rows + ")";
+                    values = values + ")";
+                }
                 cmd.CommandText = "INSERT " + TableName + rows + " VALUES " + values + ";";
                 cmd.ExecuteNonQuery();
                
@@ -189,7 +234,7 @@ namespace Зарплата
             label3.Text = "Процесс: чтение исходных данных";
             label3.Update();
 
-            var wb = new XLWorkbook(textBox1.Text + comboBox1.SelectedItem.ToString() + ".xlsx");
+           var wb = new XLWorkbook(textBox1.Text + comboBox1.SelectedItem.ToString() + ".xlsx");
             var ws = wb.Worksheet(1);
 
        
@@ -843,6 +888,13 @@ namespace Зарплата
                                 list1.Add(29);
                                 list1.Add(30);
                                 list1.Add(31);
+                                list1.Add(12);
+                                list1.Add(23);
+                                list1.Add(20);
+                                list1.Add(14);
+                                list1.Add(24);
+                                list1.Add(7);
+                                list1.Add(9);
 
                                 list2.Add("Filial");
                                 list2.Add("Klient");
@@ -850,6 +902,13 @@ namespace Зарплата
                                 list2.Add("Summa_mat");
                                 list2.Add("Summa_trud");
                                 list2.Add("Summa_rashod");
+                                list2.Add("Status_ZO");
+                                list2.Add("Status_ZNR");
+                                list2.Add("Nomer_ZNR");
+                                list2.Add("ZO_zakr_date");
+                                list2.Add("ZNR_zakr_date");
+                                list2.Add("Truck_model");
+                                list2.Add("Prichina");
 
                                 list3.Add("string");
                                 list3.Add("string");
@@ -857,6 +916,13 @@ namespace Зарплата
                                 list3.Add("float");
                                 list3.Add("float");
                                 list3.Add("float");
+                                list3.Add("string");
+                                list3.Add("string");
+                                list3.Add("int");
+                                list3.Add("date");
+                                list3.Add("date");
+                                list3.Add("string");
+                                list3.Add("string");
 
                                 AddToBase(dir, "Zakr", comboBox1.SelectedItem.ToString(), list1, list2, list3); //закрывашки
 
@@ -1062,6 +1128,62 @@ namespace Зарплата
 
 
                             }
+
+                            if (ws.Cell(i, j).Value.ToString().Equals("Истек срок"))
+                            {
+
+                                listBox1.Items.Add("Обнаружен отчет Расчет ЗП. Имя " + dir);
+                                listBox1.Update();
+
+
+                                list1.Clear(); list2.Clear(); list3.Clear();
+
+                                list1.Add(3);
+                                list1.Add(6);
+                                list1.Add(7);
+                                list1.Add(8);
+                                list1.Add(10);
+                                list1.Add(12);
+                                list1.Add(13);
+                                list1.Add(16);
+                                list1.Add(17);
+                                list1.Add(18);
+                               
+                               list1.Add(20);
+                               list1.Add(21);
+
+                                list2.Add("FIO");
+                                list2.Add("Filial");
+                                list2.Add("Nomer_ZO");
+                                list2.Add("Tip_ZO");
+                                list2.Add("Nomer_ZNR");
+                                list2.Add("Sum_klient");
+                                list2.Add("Sum_tsk");
+                                list2.Add("Role");
+                                list2.Add("KTU");
+                                list2.Add("Davnost");
+                               list2.Add("Srok");
+                              list2.Add("Raschet");
+
+                                list3.Add("string");
+                                list3.Add("string");
+                                list3.Add("int");
+                                list3.Add("string");
+                                list3.Add("int");
+                                list3.Add("float");
+                                list3.Add("float");
+                                list3.Add("string");
+                                list3.Add("ktu_float");
+                                list3.Add("ktu_float");
+                                list3.Add("string");
+                                list3.Add("zp_float");
+
+                                AddToBase(dir, "ZP_po_FIO", comboBox1.SelectedItem.ToString(), list1, list2, list3); //уволенные
+
+
+                            }
+
+
                         }
                     }
 
@@ -1086,27 +1208,181 @@ namespace Зарплата
 
             sqlConnection1.Open();
 
+            try
+            {   // Open the text file using a stream reader.
+                using (StreamReader sr = new StreamReader("C:\\Users\\RomanNB\\Documents\\zarplata.sql"))
+                {
+                    // Read the stream to a string, and write the string to the console.
+                    cmd.CommandText = sr.ReadToEnd();
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+            }
+            catch (Exception ee)
+            {
+                listBox1.Items.Add("Ошибка чтения обработки ЗП: " + ee.Message);
+
+            }
+
+            //C:\Users\RomanNB\Documents
+
             cmd.CommandText = "update Motivation SET Motivation.prod_count = Kkdk.prod_count, plan_viezd = Kkdk.prod_count * 20, fact_viezd = Kkdk.viezd_count, plan_zvonok = Kkdk.prod_count * 100, fact_zvonok = Kkdk.zvonok_count, plan_smeta = Kkdk.prod_count * 50, fact_smeta = Kkdk.smeta_count from Motivation inner join Kkdk on Kkdk.crm_filial = Motivation.kurator_filial AND Kkdk.Period like " + Period + "; ";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "update Motivation SET fact_viezd_max = v2.v_vsego from Motivation inner join (select Filial,SUM(viezd_vsego) v_vsego, Period from crm_max group by Filial, Period) v2 on v2.Filial = Motivation.kurator_filial AND v2.Period like "+Period+";";
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update Motivation SET fact_zakr = z.summa from Motivation inner join (select Filial,SUM(Summa_vsego) summa, Period from Zakr where Klient != 'Техстройконтракт' group by Filial, Period) z on z.Filial like '%' + Motivation.kurator_filial + '%' AND z.Period like " + Period + ";";
+            cmd.CommandText = "update Motivation SET fact_zakr = z.summa from Motivation inner join (select Filial,SUM(Summa_vsego) summa from Zakr where Klient != 'Техстройконтракт' and ZO_zakr_date >= '" + textBox3.Text.Trim() +"' and ZO_zakr_date < dateadd(month, +1, '" + textBox3.Text.Trim() + "') group by Filial) z on z.Filial like '%' + Motivation.kurator_filial + '%' where Period like " + Period + "; ";
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update Motivation SET debitora = d.saldo from Motivation inner join (select deb_filial,SUM(deb_saldo) saldo, Period from Debitor where deb_date < '01.09.2016' and deb_date > dateadd(year, -3, '01.09.2016') group by deb_filial, Period) d on d.deb_filial = Motivation.kurator_filial AND d.Period like " + Period + ";";
+            cmd.CommandText = "update Motivation SET debitora = d.saldo from Motivation inner join (select deb_filial,SUM(deb_saldo) saldo, Period from Debitor where deb_date < '" + textBox3.Text.Trim() + "' and deb_date > dateadd(year, -3, '" + textBox3.Text.Trim() + "') group by deb_filial, Period) d on d.deb_filial = Motivation.kurator_filial AND d.Period like " + Period + ";";
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update Motivation SET net_od = od.doc from Motivation inner join (select Filial,SUM(summa_doc) doc, Period from net_OD where OD_date < '01.09.2016' and OD_date > dateadd(year, -3, '01.09.2016') group by Filial, Period) od on od.Filial = Motivation.kurator_filial AND od.Period like " + Period + ";";
+            cmd.CommandText = "update Motivation SET net_od = od.doc from Motivation inner join (select Filial,SUM(summa_doc) doc, Period from net_OD where OD_date < '" + textBox3.Text.Trim() + "' and OD_date > dateadd(year, -3, '" + textBox3.Text.Trim() + "') group by Filial, Period) od on od.Filial = Motivation.kurator_filial AND od.Period like " + Period + ";";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "update Motivation SET plan_zakr = pl.Sum_plan from Motivation inner join (select Filial,Sum_plan, Period from Plann ) pl on pl.Filial = Motivation.kurator_filial AND pl.Period like " + Period + ";";
 
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update Motivation SET vnutr_zakr = z.summa from Motivation inner join (select Filial,SUM(Summa_trud) summa, Period from Zakr where Klient  = 'Техстройконтракт' group by Filial, Period) z on z.Filial like '%' + Motivation.kurator_filial + '%' AND z.Period like " + Period + ";";
+            cmd.CommandText = "update Motivation SET vnutr_zakr = z.summa from Motivation inner join (select Filial,SUM(Summa_trud) summa from Zakr where Klient  = 'Техстройконтракт' and ZO_zakr_date >= '" + textBox3.Text.Trim() + "' and ZO_zakr_date < dateadd(month, +1, '" + textBox3.Text.Trim() + "') group by Filial) z on z.Filial like '%' + Motivation.kurator_filial + '%';";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "delete from Virabotka where Virabotka.FIO LIKE '%?%' OR Virabotka.Data_priema > '" + textBox3.Text.Trim() + "' AND Period like " + Period + "; ";
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update Motivation SET virabotka = vir.summa, mehan_count = m_count from Motivation inner join (select Filial,SUM(time_vsego) summa, COUNT(Virabotka.FIO) m_count, Virabotka.Period from Virabotka inner join Shtat on Shtat.tab = Virabotka.Tab_num AND Shtat.Period = Virabotka.Period group by Filial, Virabotka.Period) vir on vir.Filial like '%' + Motivation.kurator_filial + '%' AND vir.Period like " + Period + ";";
+            cmd.CommandText = "update Motivation SET virabotka = vir.summa, mehan_count = m_count from Motivation inner join (select Filial,SUM(time_vsego) summa, COUNT(Virabotka.FIO) m_count, Virabotka.Period from Virabotka inner join (select * from Shtat where Period like " + Period + " ) t on t.tab = Virabotka.Tab_num AND t.Period = Virabotka.Period group by Filial, Virabotka.Period) vir on vir.Filial like '%' + Motivation.kurator_filial + '%' AND vir.Period like " + Period + ";";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "delete from Virabotka where Virabotka.FIO LIKE '%?%' OR Virabotka.Data_priema > '" + textBox3.Text.Trim() + "' AND Period like " + Period + "; ";
             cmd.ExecuteNonQuery();
+
+
+            // Зарплата
+
+           чсмчсм
+
+            
+
+            //Создаем workbook
+            var workbook1 = new XLWorkbook();
+            //Название страницы
+            var worksheet1 = workbook1.Worksheets.Add("Премия за ЗнР");
+            //Заполняем ячейки
+
+            var ZP_po_FIO = (from c in db.Test_1 where c.Period == comboBox1.SelectedItem.ToString() select c).ToList();
+            ZP_po_FIO.Add(new Test_1 { Truck = " " });
+            int m = 2, n = 2, row_num;
+
+            worksheet1.Row(1).Style.Font.Bold = true;
+            worksheet1.Row(1).Style.Alignment.WrapText = true;
+            worksheet1.Row(1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            worksheet1.Range(1, 1, 1, worksheet1.ColumnsUsed().Count()).Style.Fill.BackgroundColor = XLColor.LightGray;
+
+
+            worksheet1.Cell(1, 1).Value = "Номер ЗнР";
+            worksheet1.Cell(1, 2).Value = "Клиент";
+            worksheet1.Cell(1, 3).Value = "Машина";
+            worksheet1.Cell(1, 4).Value = "Дата закр. ЗО";
+            worksheet1.Cell(1, 5).Value = "Дата закр. ЗнР";
+            worksheet1.Cell(1, 6).Value = "Давн";
+            worksheet1.Cell(1, 7).Value = "Причина";
+            worksheet1.Cell(1, 8).Value = "Труд";
+            worksheet1.Cell(1, 9).Value = "Расходы";
+            worksheet1.Cell(1, 10).Value = "Материал";
+            worksheet1.Cell(1, 11).Value = "ЗП прод труд";
+            worksheet1.Cell(1, 12).Value = "ЗП прод мат";
+            worksheet1.Cell(1, 13).Value = "ЗП бриг труд";
+            worksheet1.Cell(1, 14).Value = "ЗП бриг мат";
+            worksheet1.Cell(1, 15).Value = "ЗП мех труд закр";
+            worksheet1.Cell(1, 16).Value = "ЗП мех расход закр";
+            worksheet1.Cell(1, 17).Value = "ЗП мех труд док";
+            worksheet1.Cell(1, 18).Value = "ЗП мех расход док";
+            worksheet1.Cell(1, 19).Value = "ЗП оформ мат";
+            worksheet1.Cell(1, 20).Value = "ЗП оформ труд";
+            worksheet1.Cell(1, 21).Value = "% прод мат";
+            worksheet1.Cell(1, 22).Value = "% прод труд";
+            worksheet1.Cell(1, 23).Value = "% бригад труд";
+            worksheet1.Cell(1, 24).Value = "% бригад мат";
+            worksheet1.Cell(1, 25).Value = "% мех труд закр";
+            worksheet1.Cell(1, 26).Value = "% мех труд док";
+            worksheet1.Cell(1, 27).Value = "% оформ мат";
+            worksheet1.Cell(1, 28).Value = "% оформ труд";
+            worksheet1.Cell(1, 29).Value = "Период";
+
+            row_num = 2;
+
+            foreach (var c in ZP_po_FIO)
+            {
+                            
+               
+                    worksheet1.Cell(row_num, 1).Value = c.Remont_num;
+                worksheet1.Cell(row_num, 2).Value = c.Klient;
+                worksheet1.Cell(row_num, 3).Value = c.Truck;
+
+                worksheet1.Cell(row_num, 4).Value = c.Data_zakr_ZO;
+                worksheet1.Cell(row_num, 4).Style.NumberFormat.Format = "mmm-yy";
+
+                worksheet1.Cell(row_num, 5).Value = c.Data_zakr_ZNR;
+                worksheet1.Cell(row_num, 5).Style.NumberFormat.Format = "mmm-yy";
+
+                worksheet1.Cell(row_num, 6).Value = c.Davnost;
+                worksheet1.Cell(row_num, 7).Value = c.Prichina;
+
+                worksheet1.Cell(row_num, 8).Value = c.Summa_trud;
+                worksheet1.Cell(row_num, 8).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 9).Value = c.Summa_rashod;
+                worksheet1.Cell(row_num, 9).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 10).Value = c.Summa_mat;
+                worksheet1.Cell(row_num, 10).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 11).Value = c.ZP_prod_trud;
+                worksheet1.Cell(row_num, 11).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 12).Value = c.ZP_prod_mat;
+                worksheet1.Cell(row_num, 12).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 13).Value = c.ZP_brigad_trud;
+                worksheet1.Cell(row_num, 13).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 14).Value = c.ZP_brigad_mat;
+                worksheet1.Cell(row_num, 14).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 15).Value = c.ZP_meh_trud_zakr;
+                worksheet1.Cell(row_num, 15).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 16).Value = c.ZP_meh_rashod_zakr;
+                worksheet1.Cell(row_num, 16).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 17).Value = c.ZP_meh_trud_dok;
+                worksheet1.Cell(row_num, 17).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 18).Value = c.ZP_meh_rashod_doc;
+                worksheet1.Cell(row_num, 18).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 19).Value = c.ZP_oform_mat;
+                worksheet1.Cell(row_num, 19).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 20).Value = c.ZP_oform_trud;
+                worksheet1.Cell(row_num, 20).Style.NumberFormat.Format = "#";
+
+                worksheet1.Cell(row_num, 21).Value = c.Procent_prod_mat;
+                worksheet1.Cell(row_num, 22).Value = c.Procent_prod_trud;
+                worksheet1.Cell(row_num, 23).Value = c.Procent_brigad_trud;
+                worksheet1.Cell(row_num, 24).Value = c.Procent_brigad_mat;
+                worksheet1.Cell(row_num, 25).Value = c.Procent_meh_trud_zakr;
+                worksheet1.Cell(row_num, 26).Value = c.Procent_meh_trud_doc;
+                worksheet1.Cell(row_num, 27).Value = c.Procent_oform_mat;
+                worksheet1.Cell(row_num, 28).Value = c.Procent_oform_trud;
+                worksheet1.Cell(row_num, 29).Value = c.Period;
+
+                row_num++;
+            }
+
+             workbook1.Worksheets.Add("Анализ ЗнР");
+
+            worksheet1.Cell(1, 1).Value = "Выбираем ЗнР, которые есть в закрывашках, но нет в ЗП ";
+
+            /*
+
+            */
+
+            workbook1.SaveAs(textBox1.Text + "\\zp_fio_svod.xlsx");
 
             //Создаем workbook
             var workbook = new XLWorkbook();
@@ -1118,7 +1394,7 @@ namespace Зарплата
 
             var Kurator_Itog = (from c in db.Motivation  where c.Period == comboBox1.SelectedItem.ToString() select c).ToList();
             Kurator_Itog.Add(new Motivation {kurator_fio = " "});
-            int m = 2, n = 2, row_num;
+            m = 2; n = 2;  
 
             worksheet.Row(1).Style.Font.Bold = true;
             worksheet.Row(1).Style.Alignment.WrapText = true;
@@ -1344,6 +1620,8 @@ namespace Зарплата
 
                     n = m + 1;
                     m++;
+
+                   
                 }
                 
                 if (!c.kurator_fio.Equals(" "))
