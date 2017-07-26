@@ -26,6 +26,8 @@ namespace Зарплата {
         
         private Bonus_za_ZNRDataTable tableBonus_za_ZNR;
         
+        private MotivationDataTable tableMotivation;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace Зарплата {
                 if ((ds.Tables["Bonus_za_ZNR"] != null)) {
                     base.Tables.Add(new Bonus_za_ZNRDataTable(ds.Tables["Bonus_za_ZNR"]));
                 }
+                if ((ds.Tables["Motivation"] != null)) {
+                    base.Tables.Add(new MotivationDataTable(ds.Tables["Motivation"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace Зарплата {
         public Bonus_za_ZNRDataTable Bonus_za_ZNR {
             get {
                 return this.tableBonus_za_ZNR;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MotivationDataTable Motivation {
+            get {
+                return this.tableMotivation;
             }
         }
         
@@ -155,6 +170,9 @@ namespace Зарплата {
                 if ((ds.Tables["Bonus_za_ZNR"] != null)) {
                     base.Tables.Add(new Bonus_za_ZNRDataTable(ds.Tables["Bonus_za_ZNR"]));
                 }
+                if ((ds.Tables["Motivation"] != null)) {
+                    base.Tables.Add(new MotivationDataTable(ds.Tables["Motivation"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace Зарплата {
                     this.tableBonus_za_ZNR.InitVars();
                 }
             }
+            this.tableMotivation = ((MotivationDataTable)(base.Tables["Motivation"]));
+            if ((initTable == true)) {
+                if ((this.tableMotivation != null)) {
+                    this.tableMotivation.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace Зарплата {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableBonus_za_ZNR = new Bonus_za_ZNRDataTable();
             base.Tables.Add(this.tableBonus_za_ZNR);
+            this.tableMotivation = new MotivationDataTable();
+            base.Tables.Add(this.tableMotivation);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeBonus_za_ZNR() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeMotivation() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace Зарплата {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void Bonus_za_ZNRRowChangeEventHandler(object sender, Bonus_za_ZNRRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void MotivationRowChangeEventHandler(object sender, MotivationRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -679,6 +714,678 @@ namespace Зарплата {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MotivationDataTable : global::System.Data.TypedTableBase<MotivationRow> {
+            
+            private global::System.Data.DataColumn columnkurator_fio;
+            
+            private global::System.Data.DataColumn columnkurator_id;
+            
+            private global::System.Data.DataColumn columnkurator_filial;
+            
+            private global::System.Data.DataColumn columnPeriod;
+            
+            private global::System.Data.DataColumn columnprod_count;
+            
+            private global::System.Data.DataColumn columnplan_viezd;
+            
+            private global::System.Data.DataColumn columnfact_viezd;
+            
+            private global::System.Data.DataColumn columnplan_zvonok;
+            
+            private global::System.Data.DataColumn columnfact_zvonok;
+            
+            private global::System.Data.DataColumn columnplan_smeta;
+            
+            private global::System.Data.DataColumn columnfact_smeta;
+            
+            private global::System.Data.DataColumn columnfact_viezd_max;
+            
+            private global::System.Data.DataColumn columnK_crm;
+            
+            private global::System.Data.DataColumn columnZP_crm;
+            
+            private global::System.Data.DataColumn columnplan_zakr;
+            
+            private global::System.Data.DataColumn columnfact_zakr;
+            
+            private global::System.Data.DataColumn columnK_zakr;
+            
+            private global::System.Data.DataColumn columnZP_zakr;
+            
+            private global::System.Data.DataColumn columndebitora;
+            
+            private global::System.Data.DataColumn columnBonus_deb;
+            
+            private global::System.Data.DataColumn columnnet_od;
+            
+            private global::System.Data.DataColumn columnBonus_OD;
+            
+            private global::System.Data.DataColumn columnmehan_count;
+            
+            private global::System.Data.DataColumn columnvirabotka;
+            
+            private global::System.Data.DataColumn columnK_vir;
+            
+            private global::System.Data.DataColumn columnZP_vir;
+            
+            private global::System.Data.DataColumn columnvnutr_zakr;
+            
+            private global::System.Data.DataColumn columnZP_vnutr;
+            
+            private global::System.Data.DataColumn columnSum_motiv;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MotivationDataTable() {
+                this.TableName = "Motivation";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal MotivationDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected MotivationDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kurator_fioColumn {
+                get {
+                    return this.columnkurator_fio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kurator_idColumn {
+                get {
+                    return this.columnkurator_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn kurator_filialColumn {
+                get {
+                    return this.columnkurator_filial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PeriodColumn {
+                get {
+                    return this.columnPeriod;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn prod_countColumn {
+                get {
+                    return this.columnprod_count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn plan_viezdColumn {
+                get {
+                    return this.columnplan_viezd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fact_viezdColumn {
+                get {
+                    return this.columnfact_viezd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn plan_zvonokColumn {
+                get {
+                    return this.columnplan_zvonok;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fact_zvonokColumn {
+                get {
+                    return this.columnfact_zvonok;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn plan_smetaColumn {
+                get {
+                    return this.columnplan_smeta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fact_smetaColumn {
+                get {
+                    return this.columnfact_smeta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fact_viezd_maxColumn {
+                get {
+                    return this.columnfact_viezd_max;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn K_crmColumn {
+                get {
+                    return this.columnK_crm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ZP_crmColumn {
+                get {
+                    return this.columnZP_crm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn plan_zakrColumn {
+                get {
+                    return this.columnplan_zakr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fact_zakrColumn {
+                get {
+                    return this.columnfact_zakr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn K_zakrColumn {
+                get {
+                    return this.columnK_zakr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ZP_zakrColumn {
+                get {
+                    return this.columnZP_zakr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn debitoraColumn {
+                get {
+                    return this.columndebitora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Bonus_debColumn {
+                get {
+                    return this.columnBonus_deb;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn net_odColumn {
+                get {
+                    return this.columnnet_od;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Bonus_ODColumn {
+                get {
+                    return this.columnBonus_OD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn mehan_countColumn {
+                get {
+                    return this.columnmehan_count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn virabotkaColumn {
+                get {
+                    return this.columnvirabotka;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn K_virColumn {
+                get {
+                    return this.columnK_vir;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ZP_virColumn {
+                get {
+                    return this.columnZP_vir;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn vnutr_zakrColumn {
+                get {
+                    return this.columnvnutr_zakr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ZP_vnutrColumn {
+                get {
+                    return this.columnZP_vnutr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Sum_motivColumn {
+                get {
+                    return this.columnSum_motiv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MotivationRow this[int index] {
+                get {
+                    return ((MotivationRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MotivationRowChangeEventHandler MotivationRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MotivationRowChangeEventHandler MotivationRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MotivationRowChangeEventHandler MotivationRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event MotivationRowChangeEventHandler MotivationRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddMotivationRow(MotivationRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MotivationRow AddMotivationRow(
+                        string kurator_fio, 
+                        int kurator_id, 
+                        string kurator_filial, 
+                        string Period, 
+                        int prod_count, 
+                        int plan_viezd, 
+                        int fact_viezd, 
+                        int plan_zvonok, 
+                        int fact_zvonok, 
+                        int plan_smeta, 
+                        int fact_smeta, 
+                        int fact_viezd_max, 
+                        double K_crm, 
+                        double ZP_crm, 
+                        double plan_zakr, 
+                        double fact_zakr, 
+                        double K_zakr, 
+                        double ZP_zakr, 
+                        double debitora, 
+                        double Bonus_deb, 
+                        double net_od, 
+                        double Bonus_OD, 
+                        int mehan_count, 
+                        double virabotka, 
+                        double K_vir, 
+                        double ZP_vir, 
+                        double vnutr_zakr, 
+                        double ZP_vnutr, 
+                        double Sum_motiv) {
+                MotivationRow rowMotivationRow = ((MotivationRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        kurator_fio,
+                        kurator_id,
+                        kurator_filial,
+                        Period,
+                        prod_count,
+                        plan_viezd,
+                        fact_viezd,
+                        plan_zvonok,
+                        fact_zvonok,
+                        plan_smeta,
+                        fact_smeta,
+                        fact_viezd_max,
+                        K_crm,
+                        ZP_crm,
+                        plan_zakr,
+                        fact_zakr,
+                        K_zakr,
+                        ZP_zakr,
+                        debitora,
+                        Bonus_deb,
+                        net_od,
+                        Bonus_OD,
+                        mehan_count,
+                        virabotka,
+                        K_vir,
+                        ZP_vir,
+                        vnutr_zakr,
+                        ZP_vnutr,
+                        Sum_motiv};
+                rowMotivationRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMotivationRow);
+                return rowMotivationRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                MotivationDataTable cln = ((MotivationDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MotivationDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnkurator_fio = base.Columns["kurator_fio"];
+                this.columnkurator_id = base.Columns["kurator_id"];
+                this.columnkurator_filial = base.Columns["kurator_filial"];
+                this.columnPeriod = base.Columns["Period"];
+                this.columnprod_count = base.Columns["prod_count"];
+                this.columnplan_viezd = base.Columns["plan_viezd"];
+                this.columnfact_viezd = base.Columns["fact_viezd"];
+                this.columnplan_zvonok = base.Columns["plan_zvonok"];
+                this.columnfact_zvonok = base.Columns["fact_zvonok"];
+                this.columnplan_smeta = base.Columns["plan_smeta"];
+                this.columnfact_smeta = base.Columns["fact_smeta"];
+                this.columnfact_viezd_max = base.Columns["fact_viezd_max"];
+                this.columnK_crm = base.Columns["K_crm"];
+                this.columnZP_crm = base.Columns["ZP_crm"];
+                this.columnplan_zakr = base.Columns["plan_zakr"];
+                this.columnfact_zakr = base.Columns["fact_zakr"];
+                this.columnK_zakr = base.Columns["K_zakr"];
+                this.columnZP_zakr = base.Columns["ZP_zakr"];
+                this.columndebitora = base.Columns["debitora"];
+                this.columnBonus_deb = base.Columns["Bonus_deb"];
+                this.columnnet_od = base.Columns["net_od"];
+                this.columnBonus_OD = base.Columns["Bonus_OD"];
+                this.columnmehan_count = base.Columns["mehan_count"];
+                this.columnvirabotka = base.Columns["virabotka"];
+                this.columnK_vir = base.Columns["K_vir"];
+                this.columnZP_vir = base.Columns["ZP_vir"];
+                this.columnvnutr_zakr = base.Columns["vnutr_zakr"];
+                this.columnZP_vnutr = base.Columns["ZP_vnutr"];
+                this.columnSum_motiv = base.Columns["Sum_motiv"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnkurator_fio = new global::System.Data.DataColumn("kurator_fio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkurator_fio);
+                this.columnkurator_id = new global::System.Data.DataColumn("kurator_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkurator_id);
+                this.columnkurator_filial = new global::System.Data.DataColumn("kurator_filial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkurator_filial);
+                this.columnPeriod = new global::System.Data.DataColumn("Period", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPeriod);
+                this.columnprod_count = new global::System.Data.DataColumn("prod_count", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprod_count);
+                this.columnplan_viezd = new global::System.Data.DataColumn("plan_viezd", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplan_viezd);
+                this.columnfact_viezd = new global::System.Data.DataColumn("fact_viezd", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfact_viezd);
+                this.columnplan_zvonok = new global::System.Data.DataColumn("plan_zvonok", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplan_zvonok);
+                this.columnfact_zvonok = new global::System.Data.DataColumn("fact_zvonok", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfact_zvonok);
+                this.columnplan_smeta = new global::System.Data.DataColumn("plan_smeta", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplan_smeta);
+                this.columnfact_smeta = new global::System.Data.DataColumn("fact_smeta", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfact_smeta);
+                this.columnfact_viezd_max = new global::System.Data.DataColumn("fact_viezd_max", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfact_viezd_max);
+                this.columnK_crm = new global::System.Data.DataColumn("K_crm", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnK_crm);
+                this.columnZP_crm = new global::System.Data.DataColumn("ZP_crm", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZP_crm);
+                this.columnplan_zakr = new global::System.Data.DataColumn("plan_zakr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplan_zakr);
+                this.columnfact_zakr = new global::System.Data.DataColumn("fact_zakr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfact_zakr);
+                this.columnK_zakr = new global::System.Data.DataColumn("K_zakr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnK_zakr);
+                this.columnZP_zakr = new global::System.Data.DataColumn("ZP_zakr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZP_zakr);
+                this.columndebitora = new global::System.Data.DataColumn("debitora", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndebitora);
+                this.columnBonus_deb = new global::System.Data.DataColumn("Bonus_deb", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBonus_deb);
+                this.columnnet_od = new global::System.Data.DataColumn("net_od", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnet_od);
+                this.columnBonus_OD = new global::System.Data.DataColumn("Bonus_OD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBonus_OD);
+                this.columnmehan_count = new global::System.Data.DataColumn("mehan_count", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmehan_count);
+                this.columnvirabotka = new global::System.Data.DataColumn("virabotka", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvirabotka);
+                this.columnK_vir = new global::System.Data.DataColumn("K_vir", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnK_vir);
+                this.columnZP_vir = new global::System.Data.DataColumn("ZP_vir", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZP_vir);
+                this.columnvnutr_zakr = new global::System.Data.DataColumn("vnutr_zakr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvnutr_zakr);
+                this.columnZP_vnutr = new global::System.Data.DataColumn("ZP_vnutr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZP_vnutr);
+                this.columnSum_motiv = new global::System.Data.DataColumn("Sum_motiv", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSum_motiv);
+                this.columnkurator_fio.MaxLength = 2147483647;
+                this.columnkurator_filial.MaxLength = 2147483647;
+                this.columnPeriod.AllowDBNull = false;
+                this.columnPeriod.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MotivationRow NewMotivationRow() {
+                return ((MotivationRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MotivationRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(MotivationRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MotivationRowChanged != null)) {
+                    this.MotivationRowChanged(this, new MotivationRowChangeEvent(((MotivationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MotivationRowChanging != null)) {
+                    this.MotivationRowChanging(this, new MotivationRowChangeEvent(((MotivationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MotivationRowDeleted != null)) {
+                    this.MotivationRowDeleted(this, new MotivationRowChangeEvent(((MotivationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MotivationRowDeleting != null)) {
+                    this.MotivationRowDeleting(this, new MotivationRowChangeEvent(((MotivationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveMotivationRow(MotivationRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ZarplataDataSet ds = new ZarplataDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MotivationDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class Bonus_za_ZNRRow : global::System.Data.DataRow {
@@ -1030,6 +1737,816 @@ namespace Зарплата {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class MotivationRow : global::System.Data.DataRow {
+            
+            private MotivationDataTable tableMotivation;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal MotivationRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMotivation = ((MotivationDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kurator_fio {
+                get {
+                    try {
+                        return ((string)(this[this.tableMotivation.kurator_fioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'kurator_fio\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.kurator_fioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int kurator_id {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.kurator_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'kurator_id\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.kurator_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kurator_filial {
+                get {
+                    try {
+                        return ((string)(this[this.tableMotivation.kurator_filialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'kurator_filial\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.kurator_filialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Period {
+                get {
+                    return ((string)(this[this.tableMotivation.PeriodColumn]));
+                }
+                set {
+                    this[this.tableMotivation.PeriodColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int prod_count {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.prod_countColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'prod_count\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.prod_countColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int plan_viezd {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.plan_viezdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'plan_viezd\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.plan_viezdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int fact_viezd {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.fact_viezdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fact_viezd\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.fact_viezdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int plan_zvonok {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.plan_zvonokColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'plan_zvonok\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.plan_zvonokColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int fact_zvonok {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.fact_zvonokColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fact_zvonok\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.fact_zvonokColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int plan_smeta {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.plan_smetaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'plan_smeta\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.plan_smetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int fact_smeta {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.fact_smetaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fact_smeta\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.fact_smetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int fact_viezd_max {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.fact_viezd_maxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fact_viezd_max\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.fact_viezd_maxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double K_crm {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.K_crmColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'K_crm\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.K_crmColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double ZP_crm {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.ZP_crmColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ZP_crm\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.ZP_crmColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double plan_zakr {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.plan_zakrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'plan_zakr\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.plan_zakrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double fact_zakr {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.fact_zakrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fact_zakr\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.fact_zakrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double K_zakr {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.K_zakrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'K_zakr\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.K_zakrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double ZP_zakr {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.ZP_zakrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ZP_zakr\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.ZP_zakrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double debitora {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.debitoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'debitora\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.debitoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Bonus_deb {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.Bonus_debColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Bonus_deb\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.Bonus_debColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double net_od {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.net_odColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'net_od\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.net_odColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Bonus_OD {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.Bonus_ODColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Bonus_OD\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.Bonus_ODColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int mehan_count {
+                get {
+                    try {
+                        return ((int)(this[this.tableMotivation.mehan_countColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'mehan_count\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.mehan_countColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double virabotka {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.virabotkaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'virabotka\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.virabotkaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double K_vir {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.K_virColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'K_vir\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.K_virColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double ZP_vir {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.ZP_virColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ZP_vir\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.ZP_virColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double vnutr_zakr {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.vnutr_zakrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'vnutr_zakr\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.vnutr_zakrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double ZP_vnutr {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.ZP_vnutrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ZP_vnutr\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.ZP_vnutrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Sum_motiv {
+                get {
+                    try {
+                        return ((double)(this[this.tableMotivation.Sum_motivColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Sum_motiv\' в таблице \'Motivation\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMotivation.Sum_motivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskurator_fioNull() {
+                return this.IsNull(this.tableMotivation.kurator_fioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkurator_fioNull() {
+                this[this.tableMotivation.kurator_fioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskurator_idNull() {
+                return this.IsNull(this.tableMotivation.kurator_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkurator_idNull() {
+                this[this.tableMotivation.kurator_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskurator_filialNull() {
+                return this.IsNull(this.tableMotivation.kurator_filialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkurator_filialNull() {
+                this[this.tableMotivation.kurator_filialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isprod_countNull() {
+                return this.IsNull(this.tableMotivation.prod_countColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setprod_countNull() {
+                this[this.tableMotivation.prod_countColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isplan_viezdNull() {
+                return this.IsNull(this.tableMotivation.plan_viezdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setplan_viezdNull() {
+                this[this.tableMotivation.plan_viezdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfact_viezdNull() {
+                return this.IsNull(this.tableMotivation.fact_viezdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfact_viezdNull() {
+                this[this.tableMotivation.fact_viezdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isplan_zvonokNull() {
+                return this.IsNull(this.tableMotivation.plan_zvonokColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setplan_zvonokNull() {
+                this[this.tableMotivation.plan_zvonokColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfact_zvonokNull() {
+                return this.IsNull(this.tableMotivation.fact_zvonokColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfact_zvonokNull() {
+                this[this.tableMotivation.fact_zvonokColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isplan_smetaNull() {
+                return this.IsNull(this.tableMotivation.plan_smetaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setplan_smetaNull() {
+                this[this.tableMotivation.plan_smetaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfact_smetaNull() {
+                return this.IsNull(this.tableMotivation.fact_smetaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfact_smetaNull() {
+                this[this.tableMotivation.fact_smetaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfact_viezd_maxNull() {
+                return this.IsNull(this.tableMotivation.fact_viezd_maxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfact_viezd_maxNull() {
+                this[this.tableMotivation.fact_viezd_maxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsK_crmNull() {
+                return this.IsNull(this.tableMotivation.K_crmColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetK_crmNull() {
+                this[this.tableMotivation.K_crmColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsZP_crmNull() {
+                return this.IsNull(this.tableMotivation.ZP_crmColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetZP_crmNull() {
+                this[this.tableMotivation.ZP_crmColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isplan_zakrNull() {
+                return this.IsNull(this.tableMotivation.plan_zakrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setplan_zakrNull() {
+                this[this.tableMotivation.plan_zakrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfact_zakrNull() {
+                return this.IsNull(this.tableMotivation.fact_zakrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfact_zakrNull() {
+                this[this.tableMotivation.fact_zakrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsK_zakrNull() {
+                return this.IsNull(this.tableMotivation.K_zakrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetK_zakrNull() {
+                this[this.tableMotivation.K_zakrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsZP_zakrNull() {
+                return this.IsNull(this.tableMotivation.ZP_zakrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetZP_zakrNull() {
+                this[this.tableMotivation.ZP_zakrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdebitoraNull() {
+                return this.IsNull(this.tableMotivation.debitoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdebitoraNull() {
+                this[this.tableMotivation.debitoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBonus_debNull() {
+                return this.IsNull(this.tableMotivation.Bonus_debColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBonus_debNull() {
+                this[this.tableMotivation.Bonus_debColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isnet_odNull() {
+                return this.IsNull(this.tableMotivation.net_odColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setnet_odNull() {
+                this[this.tableMotivation.net_odColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBonus_ODNull() {
+                return this.IsNull(this.tableMotivation.Bonus_ODColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBonus_ODNull() {
+                this[this.tableMotivation.Bonus_ODColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismehan_countNull() {
+                return this.IsNull(this.tableMotivation.mehan_countColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmehan_countNull() {
+                this[this.tableMotivation.mehan_countColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsvirabotkaNull() {
+                return this.IsNull(this.tableMotivation.virabotkaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetvirabotkaNull() {
+                this[this.tableMotivation.virabotkaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsK_virNull() {
+                return this.IsNull(this.tableMotivation.K_virColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetK_virNull() {
+                this[this.tableMotivation.K_virColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsZP_virNull() {
+                return this.IsNull(this.tableMotivation.ZP_virColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetZP_virNull() {
+                this[this.tableMotivation.ZP_virColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isvnutr_zakrNull() {
+                return this.IsNull(this.tableMotivation.vnutr_zakrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setvnutr_zakrNull() {
+                this[this.tableMotivation.vnutr_zakrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsZP_vnutrNull() {
+                return this.IsNull(this.tableMotivation.ZP_vnutrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetZP_vnutrNull() {
+                this[this.tableMotivation.ZP_vnutrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSum_motivNull() {
+                return this.IsNull(this.tableMotivation.Sum_motivColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSum_motivNull() {
+                this[this.tableMotivation.Sum_motivColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1049,6 +2566,40 @@ namespace Зарплата {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Bonus_za_ZNRRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class MotivationRowChangeEvent : global::System.EventArgs {
+            
+            private MotivationRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MotivationRowChangeEvent(MotivationRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MotivationRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1385,6 +2936,487 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class MotivationTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public MotivationTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Motivation";
+            tableMapping.ColumnMappings.Add("kurator_fio", "kurator_fio");
+            tableMapping.ColumnMappings.Add("kurator_id", "kurator_id");
+            tableMapping.ColumnMappings.Add("kurator_filial", "kurator_filial");
+            tableMapping.ColumnMappings.Add("Period", "Period");
+            tableMapping.ColumnMappings.Add("prod_count", "prod_count");
+            tableMapping.ColumnMappings.Add("plan_viezd", "plan_viezd");
+            tableMapping.ColumnMappings.Add("fact_viezd", "fact_viezd");
+            tableMapping.ColumnMappings.Add("plan_zvonok", "plan_zvonok");
+            tableMapping.ColumnMappings.Add("fact_zvonok", "fact_zvonok");
+            tableMapping.ColumnMappings.Add("plan_smeta", "plan_smeta");
+            tableMapping.ColumnMappings.Add("fact_smeta", "fact_smeta");
+            tableMapping.ColumnMappings.Add("fact_viezd_max", "fact_viezd_max");
+            tableMapping.ColumnMappings.Add("K_crm", "K_crm");
+            tableMapping.ColumnMappings.Add("ZP_crm", "ZP_crm");
+            tableMapping.ColumnMappings.Add("plan_zakr", "plan_zakr");
+            tableMapping.ColumnMappings.Add("fact_zakr", "fact_zakr");
+            tableMapping.ColumnMappings.Add("K_zakr", "K_zakr");
+            tableMapping.ColumnMappings.Add("ZP_zakr", "ZP_zakr");
+            tableMapping.ColumnMappings.Add("debitora", "debitora");
+            tableMapping.ColumnMappings.Add("Bonus_deb", "Bonus_deb");
+            tableMapping.ColumnMappings.Add("net_od", "net_od");
+            tableMapping.ColumnMappings.Add("Bonus_OD", "Bonus_OD");
+            tableMapping.ColumnMappings.Add("mehan_count", "mehan_count");
+            tableMapping.ColumnMappings.Add("virabotka", "virabotka");
+            tableMapping.ColumnMappings.Add("K_vir", "K_vir");
+            tableMapping.ColumnMappings.Add("ZP_vir", "ZP_vir");
+            tableMapping.ColumnMappings.Add("vnutr_zakr", "vnutr_zakr");
+            tableMapping.ColumnMappings.Add("ZP_vnutr", "ZP_vnutr");
+            tableMapping.ColumnMappings.Add("Sum_motiv", "Sum_motiv");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Motivation] ([kurator_fio], [kurator_id], [kurator_filial], [Period], [prod_count], [plan_viezd], [fact_viezd], [plan_zvonok], [fact_zvonok], [plan_smeta], [fact_smeta], [fact_viezd_max], [K_crm], [ZP_crm], [plan_zakr], [fact_zakr], [K_zakr], [ZP_zakr], [debitora], [Bonus_deb], [net_od], [Bonus_OD], [mehan_count], [virabotka], [K_vir], [ZP_vir], [vnutr_zakr], [ZP_vnutr], [Sum_motiv]) VALUES (@kurator_fio, @kurator_id, @kurator_filial, @Period, @prod_count, @plan_viezd, @fact_viezd, @plan_zvonok, @fact_zvonok, @plan_smeta, @fact_smeta, @fact_viezd_max, @K_crm, @ZP_crm, @plan_zakr, @fact_zakr, @K_zakr, @ZP_zakr, @debitora, @Bonus_deb, @net_od, @Bonus_OD, @mehan_count, @virabotka, @K_vir, @ZP_vir, @vnutr_zakr, @ZP_vnutr, @Sum_motiv)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kurator_fio", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kurator_fio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kurator_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kurator_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kurator_filial", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kurator_filial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Period", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Period", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prod_count", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prod_count", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@plan_viezd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "plan_viezd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fact_viezd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fact_viezd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@plan_zvonok", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "plan_zvonok", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fact_zvonok", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fact_zvonok", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@plan_smeta", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "plan_smeta", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fact_smeta", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fact_smeta", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fact_viezd_max", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fact_viezd_max", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@K_crm", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "K_crm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZP_crm", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZP_crm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@plan_zakr", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "plan_zakr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fact_zakr", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fact_zakr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@K_zakr", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "K_zakr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZP_zakr", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZP_zakr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@debitora", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "debitora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bonus_deb", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bonus_deb", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@net_od", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "net_od", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bonus_OD", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bonus_OD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mehan_count", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mehan_count", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@virabotka", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "virabotka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@K_vir", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "K_vir", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZP_vir", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZP_vir", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vnutr_zakr", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vnutr_zakr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZP_vnutr", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZP_vnutr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sum_motiv", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sum_motiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Зарплата.Properties.Settings.Default.Portal_baseConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT kurator_fio, kurator_id, kurator_filial, Period, prod_count, plan_viezd, fact_viezd, plan_zvonok, fact_zvonok, plan_smeta, fact_smeta, fact_viezd_max, K_crm, ZP_crm, plan_zakr, fact_zakr, K_zakr, ZP_zakr, debitora, Bonus_deb, net_od, Bonus_OD, mehan_count, virabotka, K_vir, ZP_vir, vnutr_zakr, ZP_vnutr, Sum_motiv FROM dbo.Motivation";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ZarplataDataSet.MotivationDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ZarplataDataSet.MotivationDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ZarplataDataSet.MotivationDataTable dataTable = new ZarplataDataSet.MotivationDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ZarplataDataSet.MotivationDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ZarplataDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Motivation");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    string kurator_fio, 
+                    global::System.Nullable<int> kurator_id, 
+                    string kurator_filial, 
+                    string Period, 
+                    global::System.Nullable<int> prod_count, 
+                    global::System.Nullable<int> plan_viezd, 
+                    global::System.Nullable<int> fact_viezd, 
+                    global::System.Nullable<int> plan_zvonok, 
+                    global::System.Nullable<int> fact_zvonok, 
+                    global::System.Nullable<int> plan_smeta, 
+                    global::System.Nullable<int> fact_smeta, 
+                    global::System.Nullable<int> fact_viezd_max, 
+                    global::System.Nullable<double> K_crm, 
+                    global::System.Nullable<double> ZP_crm, 
+                    global::System.Nullable<double> plan_zakr, 
+                    global::System.Nullable<double> fact_zakr, 
+                    global::System.Nullable<double> K_zakr, 
+                    global::System.Nullable<double> ZP_zakr, 
+                    global::System.Nullable<double> debitora, 
+                    global::System.Nullable<double> Bonus_deb, 
+                    global::System.Nullable<double> net_od, 
+                    global::System.Nullable<double> Bonus_OD, 
+                    global::System.Nullable<int> mehan_count, 
+                    global::System.Nullable<double> virabotka, 
+                    global::System.Nullable<double> K_vir, 
+                    global::System.Nullable<double> ZP_vir, 
+                    global::System.Nullable<double> vnutr_zakr, 
+                    global::System.Nullable<double> ZP_vnutr, 
+                    global::System.Nullable<double> Sum_motiv) {
+            if ((kurator_fio == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(kurator_fio));
+            }
+            if ((kurator_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(kurator_id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((kurator_filial == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(kurator_filial));
+            }
+            if ((Period == null)) {
+                throw new global::System.ArgumentNullException("Period");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Period));
+            }
+            if ((prod_count.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(prod_count.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((plan_viezd.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(plan_viezd.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((fact_viezd.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(fact_viezd.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((plan_zvonok.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(plan_zvonok.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((fact_zvonok.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(fact_zvonok.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((plan_smeta.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(plan_smeta.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((fact_smeta.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(fact_smeta.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((fact_viezd_max.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(fact_viezd_max.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((K_crm.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(K_crm.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((ZP_crm.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(ZP_crm.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((plan_zakr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((double)(plan_zakr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((fact_zakr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((double)(fact_zakr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((K_zakr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((double)(K_zakr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((ZP_zakr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((double)(ZP_zakr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((debitora.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((double)(debitora.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Bonus_deb.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((double)(Bonus_deb.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((net_od.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((double)(net_od.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((Bonus_OD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((double)(Bonus_OD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((mehan_count.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((int)(mehan_count.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((virabotka.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((double)(virabotka.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((K_vir.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((double)(K_vir.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((ZP_vir.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((double)(ZP_vir.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((vnutr_zakr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((double)(vnutr_zakr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((ZP_vnutr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((double)(ZP_vnutr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((Sum_motiv.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((double)(Sum_motiv.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1397,6 +3429,8 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
         private UpdateOrderOption _updateOrder;
         
         private Bonus_za_ZNRTableAdapter _bonus_za_ZNRTableAdapter;
+        
+        private MotivationTableAdapter _motivationTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1429,6 +3463,20 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public MotivationTableAdapter MotivationTableAdapter {
+            get {
+                return this._motivationTableAdapter;
+            }
+            set {
+                this._motivationTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -1450,6 +3498,10 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
                             && (this._bonus_za_ZNRTableAdapter.Connection != null))) {
                     return this._bonus_za_ZNRTableAdapter.Connection;
                 }
+                if (((this._motivationTableAdapter != null) 
+                            && (this._motivationTableAdapter.Connection != null))) {
+                    return this._motivationTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -1464,6 +3516,9 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
             get {
                 int count = 0;
                 if ((this._bonus_za_ZNRTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._motivationTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1486,6 +3541,15 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._motivationTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Motivation.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._motivationTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -1504,6 +3568,14 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._motivationTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Motivation.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._motivationTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -1514,6 +3586,14 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(ZarplataDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._motivationTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Motivation.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._motivationTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._bonus_za_ZNRTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Bonus_za_ZNR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -1566,6 +3646,11 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
+            if (((this._motivationTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._motivationTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" +
@@ -1605,6 +3690,15 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
                     if (this._bonus_za_ZNRTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._bonus_za_ZNRTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._bonus_za_ZNRTableAdapter.Adapter);
+                    }
+                }
+                if ((this._motivationTableAdapter != null)) {
+                    revertConnections.Add(this._motivationTableAdapter, this._motivationTableAdapter.Connection);
+                    this._motivationTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._motivationTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._motivationTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._motivationTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._motivationTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1668,6 +3762,10 @@ namespace Зарплата.ZarplataDataSetTableAdapters {
                 if ((this._bonus_za_ZNRTableAdapter != null)) {
                     this._bonus_za_ZNRTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._bonus_za_ZNRTableAdapter]));
                     this._bonus_za_ZNRTableAdapter.Transaction = null;
+                }
+                if ((this._motivationTableAdapter != null)) {
+                    this._motivationTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._motivationTableAdapter]));
+                    this._motivationTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

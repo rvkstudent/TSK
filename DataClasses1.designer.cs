@@ -22,7 +22,7 @@ namespace Зарплата
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Zarplata")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Portal_base")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -42,7 +42,7 @@ namespace Зарплата
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::Зарплата.Properties.Settings.Default.ZarplataConnectionString, mappingSource)
+				base(global::Зарплата.Properties.Settings.Default.Portal_baseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -95,6 +95,14 @@ namespace Зарплата
 			}
 		}
 		
+		public System.Data.Linq.Table<Test_1> Test_1
+		{
+			get
+			{
+				return this.GetTable<Test_1>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Motivation> Motivation
 		{
 			get
@@ -116,14 +124,6 @@ namespace Зарплата
 			get
 			{
 				return this.GetTable<crm_max>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Test_1> Test_1
-		{
-			get
-			{
-				return this.GetTable<Test_1>();
 			}
 		}
 	}
@@ -1514,537 +1514,6 @@ namespace Зарплата
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Motivation")]
-	public partial class Motivation
-	{
-		
-		private string _kurator_fio;
-		
-		private System.Nullable<short> _kurator_id;
-		
-		private string _kurator_filial;
-		
-		private string _Period;
-		
-		private System.Nullable<short> _prod_count;
-		
-		private System.Nullable<short> _plan_viezd;
-		
-		private System.Nullable<short> _fact_viezd;
-		
-		private System.Nullable<short> _fact_viezd_max;
-		
-		private System.Nullable<short> _plan_zvonok;
-		
-		private System.Nullable<short> _fact_zvonok;
-		
-		private System.Nullable<short> _plan_smeta;
-		
-		private System.Nullable<short> _fact_smeta;
-		
-		private System.Nullable<double> _fact_zakr;
-		
-		private System.Nullable<double> _plan_zakr;
-		
-		private System.Nullable<double> _net_od;
-		
-		private System.Nullable<double> _debitora;
-		
-		private System.Nullable<short> _mehan_count;
-		
-		private System.Nullable<double> _virabotka;
-		
-		private System.Nullable<double> _vnutr_zakr;
-		
-		public Motivation()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kurator_fio", DbType="NVarChar(MAX)")]
-		public string kurator_fio
-		{
-			get
-			{
-				return this._kurator_fio;
-			}
-			set
-			{
-				if ((this._kurator_fio != value))
-				{
-					this._kurator_fio = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kurator_id", DbType="SmallInt")]
-		public System.Nullable<short> kurator_id
-		{
-			get
-			{
-				return this._kurator_id;
-			}
-			set
-			{
-				if ((this._kurator_id != value))
-				{
-					this._kurator_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kurator_filial", DbType="NVarChar(MAX)")]
-		public string kurator_filial
-		{
-			get
-			{
-				return this._kurator_filial;
-			}
-			set
-			{
-				if ((this._kurator_filial != value))
-				{
-					this._kurator_filial = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50)")]
-		public string Period
-		{
-			get
-			{
-				return this._Period;
-			}
-			set
-			{
-				if ((this._Period != value))
-				{
-					this._Period = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prod_count", DbType="SmallInt")]
-		public System.Nullable<short> prod_count
-		{
-			get
-			{
-				return this._prod_count;
-			}
-			set
-			{
-				if ((this._prod_count != value))
-				{
-					this._prod_count = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_viezd", DbType="SmallInt")]
-		public System.Nullable<short> plan_viezd
-		{
-			get
-			{
-				return this._plan_viezd;
-			}
-			set
-			{
-				if ((this._plan_viezd != value))
-				{
-					this._plan_viezd = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_viezd", DbType="SmallInt")]
-		public System.Nullable<short> fact_viezd
-		{
-			get
-			{
-				return this._fact_viezd;
-			}
-			set
-			{
-				if ((this._fact_viezd != value))
-				{
-					this._fact_viezd = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_viezd_max", DbType="SmallInt")]
-		public System.Nullable<short> fact_viezd_max
-		{
-			get
-			{
-				return this._fact_viezd_max;
-			}
-			set
-			{
-				if ((this._fact_viezd_max != value))
-				{
-					this._fact_viezd_max = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_zvonok", DbType="SmallInt")]
-		public System.Nullable<short> plan_zvonok
-		{
-			get
-			{
-				return this._plan_zvonok;
-			}
-			set
-			{
-				if ((this._plan_zvonok != value))
-				{
-					this._plan_zvonok = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_zvonok", DbType="SmallInt")]
-		public System.Nullable<short> fact_zvonok
-		{
-			get
-			{
-				return this._fact_zvonok;
-			}
-			set
-			{
-				if ((this._fact_zvonok != value))
-				{
-					this._fact_zvonok = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_smeta", DbType="SmallInt")]
-		public System.Nullable<short> plan_smeta
-		{
-			get
-			{
-				return this._plan_smeta;
-			}
-			set
-			{
-				if ((this._plan_smeta != value))
-				{
-					this._plan_smeta = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_smeta", DbType="SmallInt")]
-		public System.Nullable<short> fact_smeta
-		{
-			get
-			{
-				return this._fact_smeta;
-			}
-			set
-			{
-				if ((this._fact_smeta != value))
-				{
-					this._fact_smeta = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_zakr", DbType="Float")]
-		public System.Nullable<double> fact_zakr
-		{
-			get
-			{
-				return this._fact_zakr;
-			}
-			set
-			{
-				if ((this._fact_zakr != value))
-				{
-					this._fact_zakr = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_zakr", DbType="Float")]
-		public System.Nullable<double> plan_zakr
-		{
-			get
-			{
-				return this._plan_zakr;
-			}
-			set
-			{
-				if ((this._plan_zakr != value))
-				{
-					this._plan_zakr = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_net_od", DbType="Float")]
-		public System.Nullable<double> net_od
-		{
-			get
-			{
-				return this._net_od;
-			}
-			set
-			{
-				if ((this._net_od != value))
-				{
-					this._net_od = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_debitora", DbType="Float")]
-		public System.Nullable<double> debitora
-		{
-			get
-			{
-				return this._debitora;
-			}
-			set
-			{
-				if ((this._debitora != value))
-				{
-					this._debitora = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mehan_count", DbType="SmallInt")]
-		public System.Nullable<short> mehan_count
-		{
-			get
-			{
-				return this._mehan_count;
-			}
-			set
-			{
-				if ((this._mehan_count != value))
-				{
-					this._mehan_count = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_virabotka", DbType="Float")]
-		public System.Nullable<double> virabotka
-		{
-			get
-			{
-				return this._virabotka;
-			}
-			set
-			{
-				if ((this._virabotka != value))
-				{
-					this._virabotka = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vnutr_zakr", DbType="Float")]
-		public System.Nullable<double> vnutr_zakr
-		{
-			get
-			{
-				return this._vnutr_zakr;
-			}
-			set
-			{
-				if ((this._vnutr_zakr != value))
-				{
-					this._vnutr_zakr = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stavki")]
-	public partial class Stavki
-	{
-		
-		private System.Nullable<short> _Tab_num;
-		
-		private string _FIO;
-		
-		private System.Nullable<int> _Oklad;
-		
-		private string _Period;
-		
-		public Stavki()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tab_num", DbType="SmallInt")]
-		public System.Nullable<short> Tab_num
-		{
-			get
-			{
-				return this._Tab_num;
-			}
-			set
-			{
-				if ((this._Tab_num != value))
-				{
-					this._Tab_num = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FIO", DbType="NVarChar(50)")]
-		public string FIO
-		{
-			get
-			{
-				return this._FIO;
-			}
-			set
-			{
-				if ((this._FIO != value))
-				{
-					this._FIO = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Oklad", DbType="Int")]
-		public System.Nullable<int> Oklad
-		{
-			get
-			{
-				return this._Oklad;
-			}
-			set
-			{
-				if ((this._Oklad != value))
-				{
-					this._Oklad = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50)")]
-		public string Period
-		{
-			get
-			{
-				return this._Period;
-			}
-			set
-			{
-				if ((this._Period != value))
-				{
-					this._Period = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.crm_max")]
-	public partial class crm_max
-	{
-		
-		private System.Nullable<short> _Tab_num;
-		
-		private string _Filial;
-		
-		private System.Nullable<short> _viezd_vsego;
-		
-		private System.Nullable<short> _viezd_pers;
-		
-		private string _Period;
-		
-		public crm_max()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tab_num", DbType="SmallInt")]
-		public System.Nullable<short> Tab_num
-		{
-			get
-			{
-				return this._Tab_num;
-			}
-			set
-			{
-				if ((this._Tab_num != value))
-				{
-					this._Tab_num = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Filial", DbType="NVarChar(50)")]
-		public string Filial
-		{
-			get
-			{
-				return this._Filial;
-			}
-			set
-			{
-				if ((this._Filial != value))
-				{
-					this._Filial = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_viezd_vsego", DbType="SmallInt")]
-		public System.Nullable<short> viezd_vsego
-		{
-			get
-			{
-				return this._viezd_vsego;
-			}
-			set
-			{
-				if ((this._viezd_vsego != value))
-				{
-					this._viezd_vsego = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_viezd_pers", DbType="SmallInt")]
-		public System.Nullable<short> viezd_pers
-		{
-			get
-			{
-				return this._viezd_pers;
-			}
-			set
-			{
-				if ((this._viezd_pers != value))
-				{
-					this._viezd_pers = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50)")]
-		public string Period
-		{
-			get
-			{
-				return this._Period;
-			}
-			set
-			{
-				if ((this._Period != value))
-				{
-					this._Period = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Test_1")]
 	public partial class Test_1
 	{
@@ -2578,6 +2047,699 @@ namespace Зарплата
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50)")]
+		public string Period
+		{
+			get
+			{
+				return this._Period;
+			}
+			set
+			{
+				if ((this._Period != value))
+				{
+					this._Period = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Motivation")]
+	public partial class Motivation
+	{
+		
+		private string _kurator_fio;
+		
+		private System.Nullable<int> _kurator_id;
+		
+		private string _kurator_filial;
+		
+		private string _Period;
+		
+		private System.Nullable<int> _prod_count;
+		
+		private System.Nullable<int> _plan_viezd;
+		
+		private System.Nullable<int> _fact_viezd;
+		
+		private System.Nullable<int> _plan_zvonok;
+		
+		private System.Nullable<int> _fact_zvonok;
+		
+		private System.Nullable<int> _plan_smeta;
+		
+		private System.Nullable<int> _fact_smeta;
+		
+		private System.Nullable<int> _fact_viezd_max;
+		
+		private System.Nullable<double> _K_crm;
+		
+		private System.Nullable<double> _ZP_crm;
+		
+		private System.Nullable<double> _plan_zakr;
+		
+		private System.Nullable<double> _fact_zakr;
+		
+		private System.Nullable<double> _K_zakr;
+		
+		private System.Nullable<double> _ZP_zakr;
+		
+		private System.Nullable<double> _debitora;
+		
+		private System.Nullable<double> _Bonus_deb;
+		
+		private System.Nullable<double> _net_od;
+		
+		private System.Nullable<double> _Bonus_OD;
+		
+		private System.Nullable<int> _mehan_count;
+		
+		private System.Nullable<double> _virabotka;
+		
+		private System.Nullable<double> _K_vir;
+		
+		private System.Nullable<double> _ZP_vir;
+		
+		private System.Nullable<double> _vnutr_zakr;
+		
+		private System.Nullable<double> _ZP_vnutr;
+		
+		private System.Nullable<double> _Sum_motiv;
+		
+		public Motivation()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kurator_fio", DbType="NVarChar(MAX)")]
+		public string kurator_fio
+		{
+			get
+			{
+				return this._kurator_fio;
+			}
+			set
+			{
+				if ((this._kurator_fio != value))
+				{
+					this._kurator_fio = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kurator_id", DbType="Int")]
+		public System.Nullable<int> kurator_id
+		{
+			get
+			{
+				return this._kurator_id;
+			}
+			set
+			{
+				if ((this._kurator_id != value))
+				{
+					this._kurator_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kurator_filial", DbType="NVarChar(MAX)")]
+		public string kurator_filial
+		{
+			get
+			{
+				return this._kurator_filial;
+			}
+			set
+			{
+				if ((this._kurator_filial != value))
+				{
+					this._kurator_filial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Period
+		{
+			get
+			{
+				return this._Period;
+			}
+			set
+			{
+				if ((this._Period != value))
+				{
+					this._Period = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prod_count", DbType="Int")]
+		public System.Nullable<int> prod_count
+		{
+			get
+			{
+				return this._prod_count;
+			}
+			set
+			{
+				if ((this._prod_count != value))
+				{
+					this._prod_count = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_viezd", DbType="Int")]
+		public System.Nullable<int> plan_viezd
+		{
+			get
+			{
+				return this._plan_viezd;
+			}
+			set
+			{
+				if ((this._plan_viezd != value))
+				{
+					this._plan_viezd = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_viezd", DbType="Int")]
+		public System.Nullable<int> fact_viezd
+		{
+			get
+			{
+				return this._fact_viezd;
+			}
+			set
+			{
+				if ((this._fact_viezd != value))
+				{
+					this._fact_viezd = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_zvonok", DbType="Int")]
+		public System.Nullable<int> plan_zvonok
+		{
+			get
+			{
+				return this._plan_zvonok;
+			}
+			set
+			{
+				if ((this._plan_zvonok != value))
+				{
+					this._plan_zvonok = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_zvonok", DbType="Int")]
+		public System.Nullable<int> fact_zvonok
+		{
+			get
+			{
+				return this._fact_zvonok;
+			}
+			set
+			{
+				if ((this._fact_zvonok != value))
+				{
+					this._fact_zvonok = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_smeta", DbType="Int")]
+		public System.Nullable<int> plan_smeta
+		{
+			get
+			{
+				return this._plan_smeta;
+			}
+			set
+			{
+				if ((this._plan_smeta != value))
+				{
+					this._plan_smeta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_smeta", DbType="Int")]
+		public System.Nullable<int> fact_smeta
+		{
+			get
+			{
+				return this._fact_smeta;
+			}
+			set
+			{
+				if ((this._fact_smeta != value))
+				{
+					this._fact_smeta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_viezd_max", DbType="Int")]
+		public System.Nullable<int> fact_viezd_max
+		{
+			get
+			{
+				return this._fact_viezd_max;
+			}
+			set
+			{
+				if ((this._fact_viezd_max != value))
+				{
+					this._fact_viezd_max = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_K_crm", DbType="Float")]
+		public System.Nullable<double> K_crm
+		{
+			get
+			{
+				return this._K_crm;
+			}
+			set
+			{
+				if ((this._K_crm != value))
+				{
+					this._K_crm = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_crm", DbType="Float")]
+		public System.Nullable<double> ZP_crm
+		{
+			get
+			{
+				return this._ZP_crm;
+			}
+			set
+			{
+				if ((this._ZP_crm != value))
+				{
+					this._ZP_crm = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_plan_zakr", DbType="Float")]
+		public System.Nullable<double> plan_zakr
+		{
+			get
+			{
+				return this._plan_zakr;
+			}
+			set
+			{
+				if ((this._plan_zakr != value))
+				{
+					this._plan_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fact_zakr", DbType="Float")]
+		public System.Nullable<double> fact_zakr
+		{
+			get
+			{
+				return this._fact_zakr;
+			}
+			set
+			{
+				if ((this._fact_zakr != value))
+				{
+					this._fact_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_K_zakr", DbType="Float")]
+		public System.Nullable<double> K_zakr
+		{
+			get
+			{
+				return this._K_zakr;
+			}
+			set
+			{
+				if ((this._K_zakr != value))
+				{
+					this._K_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_zakr", DbType="Float")]
+		public System.Nullable<double> ZP_zakr
+		{
+			get
+			{
+				return this._ZP_zakr;
+			}
+			set
+			{
+				if ((this._ZP_zakr != value))
+				{
+					this._ZP_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_debitora", DbType="Float")]
+		public System.Nullable<double> debitora
+		{
+			get
+			{
+				return this._debitora;
+			}
+			set
+			{
+				if ((this._debitora != value))
+				{
+					this._debitora = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bonus_deb", DbType="Float")]
+		public System.Nullable<double> Bonus_deb
+		{
+			get
+			{
+				return this._Bonus_deb;
+			}
+			set
+			{
+				if ((this._Bonus_deb != value))
+				{
+					this._Bonus_deb = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_net_od", DbType="Float")]
+		public System.Nullable<double> net_od
+		{
+			get
+			{
+				return this._net_od;
+			}
+			set
+			{
+				if ((this._net_od != value))
+				{
+					this._net_od = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bonus_OD", DbType="Float")]
+		public System.Nullable<double> Bonus_OD
+		{
+			get
+			{
+				return this._Bonus_OD;
+			}
+			set
+			{
+				if ((this._Bonus_OD != value))
+				{
+					this._Bonus_OD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mehan_count", DbType="Int")]
+		public System.Nullable<int> mehan_count
+		{
+			get
+			{
+				return this._mehan_count;
+			}
+			set
+			{
+				if ((this._mehan_count != value))
+				{
+					this._mehan_count = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_virabotka", DbType="Float")]
+		public System.Nullable<double> virabotka
+		{
+			get
+			{
+				return this._virabotka;
+			}
+			set
+			{
+				if ((this._virabotka != value))
+				{
+					this._virabotka = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_K_vir", DbType="Float")]
+		public System.Nullable<double> K_vir
+		{
+			get
+			{
+				return this._K_vir;
+			}
+			set
+			{
+				if ((this._K_vir != value))
+				{
+					this._K_vir = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_vir", DbType="Float")]
+		public System.Nullable<double> ZP_vir
+		{
+			get
+			{
+				return this._ZP_vir;
+			}
+			set
+			{
+				if ((this._ZP_vir != value))
+				{
+					this._ZP_vir = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vnutr_zakr", DbType="Float")]
+		public System.Nullable<double> vnutr_zakr
+		{
+			get
+			{
+				return this._vnutr_zakr;
+			}
+			set
+			{
+				if ((this._vnutr_zakr != value))
+				{
+					this._vnutr_zakr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZP_vnutr", DbType="Float")]
+		public System.Nullable<double> ZP_vnutr
+		{
+			get
+			{
+				return this._ZP_vnutr;
+			}
+			set
+			{
+				if ((this._ZP_vnutr != value))
+				{
+					this._ZP_vnutr = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sum_motiv", DbType="Float")]
+		public System.Nullable<double> Sum_motiv
+		{
+			get
+			{
+				return this._Sum_motiv;
+			}
+			set
+			{
+				if ((this._Sum_motiv != value))
+				{
+					this._Sum_motiv = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stavki")]
+	public partial class Stavki
+	{
+		
+		private string _FIO;
+		
+		private System.Nullable<int> _Tab_num;
+		
+		private System.Nullable<int> _Oklad;
+		
+		public Stavki()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FIO", DbType="NVarChar(MAX)")]
+		public string FIO
+		{
+			get
+			{
+				return this._FIO;
+			}
+			set
+			{
+				if ((this._FIO != value))
+				{
+					this._FIO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tab_num", DbType="Int")]
+		public System.Nullable<int> Tab_num
+		{
+			get
+			{
+				return this._Tab_num;
+			}
+			set
+			{
+				if ((this._Tab_num != value))
+				{
+					this._Tab_num = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Oklad", DbType="Int")]
+		public System.Nullable<int> Oklad
+		{
+			get
+			{
+				return this._Oklad;
+			}
+			set
+			{
+				if ((this._Oklad != value))
+				{
+					this._Oklad = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.crm_max")]
+	public partial class crm_max
+	{
+		
+		private System.Nullable<int> _Tab_num;
+		
+		private string _Filial;
+		
+		private System.Nullable<int> _viezd_pers;
+		
+		private System.Nullable<int> _viezd_vsego;
+		
+		private string _Period;
+		
+		public crm_max()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tab_num", DbType="Int")]
+		public System.Nullable<int> Tab_num
+		{
+			get
+			{
+				return this._Tab_num;
+			}
+			set
+			{
+				if ((this._Tab_num != value))
+				{
+					this._Tab_num = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Filial", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Filial
+		{
+			get
+			{
+				return this._Filial;
+			}
+			set
+			{
+				if ((this._Filial != value))
+				{
+					this._Filial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_viezd_pers", DbType="Int")]
+		public System.Nullable<int> viezd_pers
+		{
+			get
+			{
+				return this._viezd_pers;
+			}
+			set
+			{
+				if ((this._viezd_pers != value))
+				{
+					this._viezd_pers = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_viezd_vsego", DbType="Int")]
+		public System.Nullable<int> viezd_vsego
+		{
+			get
+			{
+				return this._viezd_vsego;
+			}
+			set
+			{
+				if ((this._viezd_vsego != value))
+				{
+					this._viezd_vsego = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Period
 		{
 			get

@@ -32,5 +32,16 @@ namespace Зарплата.Properties {
                 return ((string)(this["ZarplataConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ROMAN-ПК\\SQLEXPRESS;Initial Catalog=Portal_base;Integrated Security=T" +
+            "rue")]
+        public string Portal_baseConnectionString {
+            get {
+                return ((string)(this["Portal_baseConnectionString"]));
+            }
+        }
     }
 }

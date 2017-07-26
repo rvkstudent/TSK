@@ -1,19 +1,21 @@
 ﻿using ClosedXML.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
+using System.Threading;
 
 namespace Зарплата
 {
 
     public partial class Form1 : Form
     {
-        DataClasses1DataContext db = new DataClasses1DataContext(@"Data Source=ROMANNB-ПК;Initial Catalog=Zarplata;Integrated Security=True");
+        DataClasses1DataContext db = new DataClasses1DataContext(@"Data Source=ROMAN-ПК\SQLEXPRESS;Initial Catalog=Portal_base;Integrated Security=True");
          NumberStyles style;
          CultureInfo culture;
 
@@ -769,7 +771,7 @@ namespace Зарплата
             List<String> list2 = new List<string>();
             List<String> list3 = new List<string>();
 
-            File.Delete(textBox1.Text + "\\motiv.xlsx");
+           
 
             //new comment
 
@@ -805,13 +807,13 @@ namespace Зарплата
                                 list1.Add(15);
 
 
-                                list2.Add("Tab_num");
+                                list2.Add("Tab_num"); 
                                 list2.Add("Filial");
                                 list2.Add("viezd_pers");
                                 list2.Add("viezd_vsego");
 
 
-                                list3.Add("int");
+                                list3.Add("int"); 
                                 list3.Add("string");
                                 list3.Add("int");
                                 list3.Add("int");
@@ -833,14 +835,14 @@ namespace Зарплата
                                 list1.Add(8);
                                 list1.Add(9);
 
-                                list2.Add("crm_filial");
+                                list2.Add("crm_filial"); 
                                 list2.Add("prod_count");
                                 list2.Add("zvonok_count");
                                 list2.Add("viezd_count");
                                 list2.Add("smeta_count");
 
 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("int");
                                 list3.Add("parse_int");
                                 list3.Add("parse_int");
@@ -862,11 +864,11 @@ namespace Зарплата
                                 list1.Add(3);
 
 
-                                list2.Add("kurator_fio");
+                                list2.Add("kurator_fio"); 
                                 list2.Add("kurator_id");
                                 list2.Add("kurator_filial");
 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("int");
                                 list3.Add("string");
 
@@ -896,7 +898,7 @@ namespace Зарплата
                                 list1.Add(7);
                                 list1.Add(9);
 
-                                list2.Add("Filial");
+                                list2.Add("Filial"); 
                                 list2.Add("Klient");
                                 list2.Add("Summa_vsego");
                                 list2.Add("Summa_mat");
@@ -910,7 +912,7 @@ namespace Зарплата
                                 list2.Add("Truck_model");
                                 list2.Add("Prichina");
 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("string");
                                 list3.Add("float");
                                 list3.Add("float");
@@ -942,12 +944,12 @@ namespace Зарплата
                                 list1.Add(16);
 
 
-                                list2.Add("OD_date");
+                                list2.Add("OD_date"); 
                                 list2.Add("summa_doc");
                                 list2.Add("Filial");
 
 
-                                list3.Add("date");
+                                list3.Add("date"); 
                                 list3.Add("float");
                                 list3.Add("string");
 
@@ -970,12 +972,12 @@ namespace Зарплата
                                 list1.Add(25);
 
 
-                                list2.Add("deb_filial");
+                                list2.Add("deb_filial"); 
                                 list2.Add("deb_date");
                                 list2.Add("deb_saldo");
 
 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("date");
                                 list3.Add("float");
 
@@ -998,13 +1000,13 @@ namespace Зарплата
                                 list1.Add(12);
                                 list1.Add(6);
 
-                                list2.Add("Tab_num");
+                                list2.Add("Tab_num"); 
                                 list2.Add("FIO");
                                 list2.Add("time_vsego");
                                 list2.Add("Data_priema");
 
 
-                                list3.Add("int");
+                                list3.Add("int"); 
                                 list3.Add("string");
                                 list3.Add("float");
                                 list3.Add("date");
@@ -1029,14 +1031,14 @@ namespace Зарплата
                                 list1.Add(5);
 
 
-                                list2.Add("Filial");
-                                list2.Add("FIO");
+                                list2.Add("Filial"); 
                                 list2.Add("tab");
+                                list2.Add("FIO");
                                 list2.Add("Dolzhnost");
 
-                                list3.Add("string");
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("int");
+                                list3.Add("string");                                
                                 list3.Add("string");
 
 
@@ -1060,12 +1062,12 @@ namespace Зарплата
                               
 
 
-                                list2.Add("Tab_num");
+                                list2.Add("Tab_num"); 
                                 list2.Add("FIO");
                                 list2.Add("Date_uvol");
                               
 
-                                list3.Add("int");
+                                list3.Add("int"); 
                                 list3.Add("string");
                                 list3.Add("date");
                                 
@@ -1089,11 +1091,11 @@ namespace Зарплата
                                 list1.Add(2);
                             
                             
-                                list2.Add("Filial");
+                                list2.Add("Filial"); 
                                 list2.Add("Sum_plan");
                                
                                 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("float");
                                
 
@@ -1115,12 +1117,12 @@ namespace Зарплата
                                 list1.Add(2);
                                 list1.Add(3);
 
-                                list2.Add("FIO");
+                                list2.Add("FIO"); 
                                 list2.Add("Tab_num");
                                 list2.Add("Oklad");
 
 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("int");
                                 list3.Add("int");
 
@@ -1152,7 +1154,7 @@ namespace Зарплата
                                list1.Add(20);
                                list1.Add(21);
 
-                                list2.Add("FIO");
+                                list2.Add("FIO"); 
                                 list2.Add("Filial");
                                 list2.Add("Nomer_ZO");
                                 list2.Add("Tip_ZO");
@@ -1165,7 +1167,7 @@ namespace Зарплата
                                list2.Add("Srok");
                               list2.Add("Raschet");
 
-                                list3.Add("string");
+                                list3.Add("string"); 
                                 list3.Add("string");
                                 list3.Add("int");
                                 list3.Add("string");
@@ -1241,7 +1243,7 @@ namespace Зарплата
             cmd.CommandText = "update Motivation SET plan_zakr = pl.Sum_plan from Motivation inner join (select Filial,Sum_plan, Period from Plann ) pl on pl.Filial = Motivation.kurator_filial AND pl.Period like " + Period + ";";
 
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update Motivation SET vnutr_zakr = z.summa from Motivation inner join (select Filial,SUM(Summa_trud) summa from Zakr where Klient  = 'Техстройконтракт' and ZO_zakr_date >= '" + textBox3.Text.Trim() + "' and ZO_zakr_date < dateadd(month, +1, '" + textBox3.Text.Trim() + "') group by Filial) z on z.Filial like '%' + Motivation.kurator_filial + '%';";
+            cmd.CommandText = "update Motivation SET vnutr_zakr = z.summa from Motivation inner join (select Filial,SUM(Summa_trud) summa from Zakr where Filial like '%Сервис%' and Klient  = 'Техстройконтракт' and ZO_zakr_date >= '" + textBox3.Text.Trim() + "' and ZO_zakr_date < dateadd(month, +1, '" + textBox3.Text.Trim() + "') group by Filial) z on z.Filial like '%' + Motivation.kurator_filial + '%';";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "delete from Virabotka where Virabotka.FIO LIKE '%?%' OR Virabotka.Data_priema > '" + textBox3.Text.Trim() + "' AND Period like " + Period + "; ";
             cmd.ExecuteNonQuery();
@@ -1385,6 +1387,13 @@ namespace Зарплата
 
             workbook1.SaveAs(textBox1.Text + "\\zp_fio_svod.xlsx");
 
+         
+               // MessageBox.Show(«Документ создан!», «Внимание!», MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int m = 2, n = 2, row_num;
             //Создаем workbook
             var workbook = new XLWorkbook();
             //Название страницы
@@ -1393,9 +1402,9 @@ namespace Зарплата
 
             //  var CurrentPeriod = (from c in db.Bonus_za_ZNR where (c.Period == comboBox1.Text.ToString()) select c).ToList();
 
-            var Kurator_Itog = (from c in db.Motivation  where c.Period == comboBox1.SelectedItem.ToString() select c).ToList();
-            Kurator_Itog.Add(new Motivation {kurator_fio = " "});
-            m = 2; n = 2;  
+            var Kurator_Itog = (from c in db.Motivation where c.Period == comboBox1.SelectedItem.ToString() orderby c.kurator_fio select c).ToList();
+            Kurator_Itog.Add(new Motivation { kurator_fio = " " });
+            m = 2; n = 2;
 
             worksheet.Row(1).Style.Font.Bold = true;
             worksheet.Row(1).Style.Alignment.WrapText = true;
@@ -1441,26 +1450,26 @@ namespace Зарплата
             worksheet.Cell(1, 36).Value = "Санкции ККД";
             workbook.CalculateMode = XLCalculateMode.Auto;
 
-            var oklad = (from okl in db.Stavki where okl.Period == comboBox1.SelectedItem.ToString() select okl).ToList();
+            var oklad = (from okl in db.Stavki select okl).ToList();
             var pers_kurator = (from crm in db.crm_max where crm.Period == comboBox1.SelectedItem.ToString() select crm).ToList();
-            
+
 
             foreach (var c in Kurator_Itog)
             {
                 row_num = 5;
 
-                if (m >2 && (c.kurator_fio.Equals(worksheet.Cell(m-1, 1).Value.ToString()) == false || c.kurator_fio.Equals(" ") == true))
+                if (m > 2 && (c.kurator_fio.Equals(worksheet.Cell(m - 1, 1).Value.ToString()) == false || c.kurator_fio.Equals(" ") == true) && !c.kurator_fio.Contains("итого") )
                 {
                     worksheet.Cell(m, 1).Value = "Итого " + worksheet.Cell(m - 1, 1).Value.ToString();
 
                     worksheet.Cell(m, 2).Value = "ставка";
 
-                   
+
 
                     foreach (var d in oklad)
-                    { 
-                        if(d.Tab_num.Value.ToString().Equals(worksheet.Cell(m-1, 2).Value.ToString()))
-                    worksheet.Cell(m, 3).Value = d.Oklad.Value;
+                    {
+                        if (d.Tab_num.Value.ToString().Equals(worksheet.Cell(m - 1, 2).Value.ToString()))
+                            worksheet.Cell(m, 3).Value = d.Oklad.Value;
                         worksheet.Cell(m, 3).Style.NumberFormat.Format = "#";
                     }
                     //  worksheet.Cell(m, 5).FormulaA1 = "=SUM(E" + n + ":E" + (m - 1) + ")";
@@ -1483,7 +1492,7 @@ namespace Зарплата
                     {
                         if (f.Tab_num.Value.ToString().Equals(worksheet.Cell(m - 1, 2).Value.ToString()))
                             kurator_viezd = f.viezd_pers.Value;
-                     }
+                    }
 
 
                     worksheet.Cell(m, row_num).FormulaA1 = "=SUM(" + worksheet.Range(worksheet.Cell(n, row_num).Address, worksheet.Cell(m - 1, row_num).Address) + ")" + "+" + kurator_viezd; worksheet.Cell(m, row_num).Style.Fill.BackgroundColor = XLColor.LightGray;
@@ -1510,7 +1519,7 @@ namespace Зарплата
                     row_num++;
                     //ЗП crm
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
-                    worksheet.Cell(m, row_num).FormulaA1 = "=" + worksheet.Cell(m, 3).Address.ToString() + "*0.3*" + worksheet.Cell(m, row_num-1).Address.ToString();
+                    worksheet.Cell(m, row_num).FormulaA1 = "=" + worksheet.Cell(m, 3).Address.ToString() + "*0.15*" + worksheet.Cell(m, row_num - 1).Address.ToString();
                     string zp_crm = worksheet.Cell(m, row_num).Address.ToString();
                     row_num++;
                     // закрывашки план-факт
@@ -1531,7 +1540,7 @@ namespace Зарплата
 
                     row_num++; // k закрывашки
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#.##";
-                    worksheet.Cell(m, row_num).FormulaA1 = "=" + worksheet.Cell(m, 3).Address.ToString() + "*0.35*" + worksheet.Cell(m, row_num - 1).Address.ToString();
+                    worksheet.Cell(m, row_num).FormulaA1 = "=" + worksheet.Cell(m, 3).Address.ToString() + "*0.5*" + worksheet.Cell(m, row_num - 1).Address.ToString();
                     string zp_zakr = worksheet.Cell(m, row_num).Address.ToString();
 
                     row_num++; // k непоступившие ОД план
@@ -1552,7 +1561,7 @@ namespace Зарплата
                     row_num++; // дебиторка план
 
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
-                    worksheet.Cell(m, row_num).FormulaA1 = "=SUM(" + worksheet.Range(worksheet.Cell(n, row_num-7).Address, worksheet.Cell(m - 1, row_num-7).Address) + ")"; worksheet.Cell(m, row_num).Style.Fill.BackgroundColor = XLColor.LightGray;
+                    worksheet.Cell(m, row_num).FormulaA1 = "=SUM(" + worksheet.Range(worksheet.Cell(n, row_num - 7).Address, worksheet.Cell(m - 1, row_num - 7).Address) + ")"; worksheet.Cell(m, row_num).Style.Fill.BackgroundColor = XLColor.LightGray;
                     string deb_plan_Adreess = worksheet.Cell(m, row_num).Address.ToString();
 
                     row_num++; // дебиторка факт
@@ -1578,29 +1587,29 @@ namespace Зарплата
                     string meh_vir_Adreess = worksheet.Cell(m, row_num).Address.ToString();
                     row_num++; // K мех
 
-                    worksheet.Cell(m, row_num).FormulaA1 = "=" + meh_vir_Adreess + "/" + meh_cont_Adreess + "/135" ;
+                    worksheet.Cell(m, row_num).FormulaA1 = "=" + meh_vir_Adreess + "/" + meh_cont_Adreess + "/135";
                     string k_meh_Adreess = worksheet.Cell(m, row_num).Address.ToString();
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#.##";
 
                     row_num++; // ЗП выработка
 
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
-                    worksheet.Cell(m, row_num).FormulaA1 = "=" + k_meh_Adreess + "*"+ worksheet.Cell(m, 3).Address.ToString() + "*0.15";
+                    worksheet.Cell(m, row_num).FormulaA1 = "=" + k_meh_Adreess + "*" + worksheet.Cell(m, 3).Address.ToString() + "*0.15";
                     string zp_meh = worksheet.Cell(m, row_num).Address.ToString();
                     row_num++; // внутренние
 
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
                     worksheet.Cell(m, row_num).FormulaA1 = "=SUM(" + worksheet.Range(worksheet.Cell(n, row_num).Address, worksheet.Cell(m - 1, row_num).Address) + ")"; worksheet.Cell(m, row_num).Style.Fill.BackgroundColor = XLColor.LightGray;
                     string vnutr_Adreess = worksheet.Cell(m, row_num).Address.ToString();
-                 
+
                     row_num++; // K внутр
 
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
-                    worksheet.Cell(m, row_num).FormulaA1 = "=" + "IF(AND(" + vnutr_Adreess + ">0," + vnutr_Adreess + "<200000),0.03,"+ "IF(AND(" + vnutr_Adreess + ">200000," + vnutr_Adreess + "<500000),0.02,"+ "IF(AND(" + vnutr_Adreess + ">500000," + vnutr_Adreess + "<1000000),0.018," + "IF(AND(" + vnutr_Adreess + ">1000000," + vnutr_Adreess + "<3500000),0.008,"+ "IF(AND(" + vnutr_Adreess + ">3500000," + vnutr_Adreess + "<10000000000),0.006,0)" +")" + ")"+")"+ ")";
+                    worksheet.Cell(m, row_num).FormulaA1 = "=" + "IF(AND(" + vnutr_Adreess + ">0," + vnutr_Adreess + "<200000),0.03," + "IF(AND(" + vnutr_Adreess + ">200000," + vnutr_Adreess + "<500000),0.02," + "IF(AND(" + vnutr_Adreess + ">500000," + vnutr_Adreess + "<1000000),0.018," + "IF(AND(" + vnutr_Adreess + ">1000000," + vnutr_Adreess + "<3500000),0.008," + "IF(AND(" + vnutr_Adreess + ">3500000," + vnutr_Adreess + "<10000000000),0.006,0)" + ")" + ")" + ")" + ")";
                     string k_vnutr_Adreess = worksheet.Cell(m, row_num).Address.ToString();
 
                     row_num++; // ЗП внутр
-                    
+
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
                     worksheet.Cell(m, row_num).FormulaA1 = "=" + vnutr_Adreess + "*" + k_vnutr_Adreess;
                     string zp_vnutr = worksheet.Cell(m, row_num).Address.ToString();
@@ -1608,7 +1617,7 @@ namespace Зарплата
                     row_num++;  // Итого
 
                     worksheet.Cell(m, row_num).Style.NumberFormat.Format = "#,#";
-                    worksheet.Cell(m, row_num).FormulaA1 = "=" + zp_crm + "+" + zp_zakr + "+" + zp_od + "+" + zp_debitor + "+"+zp_meh + "+"+zp_vnutr;
+                    worksheet.Cell(m, row_num).FormulaA1 = "=" + zp_crm + "+" + zp_zakr + "+" + zp_od + "+" + zp_debitor + "+" + zp_meh + "+" + zp_vnutr;
                     string zp_itog = worksheet.Cell(m, row_num).Address.ToString();
 
                     row_num = row_num + 3;
@@ -1622,55 +1631,611 @@ namespace Зарплата
                     n = m + 1;
                     m++;
 
-                   
+
                 }
+
+                if (!c.kurator_fio.Equals(" ") && !c.kurator_fio.Contains("итого"))
+                {
+
+                    worksheet.Cell(m, 1).Value = c.kurator_fio.ToString();
+                    worksheet.Cell(m, 2).Value = c.kurator_id.ToString();
+                    if (c.kurator_filial != null)
+                    worksheet.Cell(m, 3).Value = c.kurator_filial.ToString();
+                    worksheet.Cell(m, 4).Value = c.Period.ToString();
+                    worksheet.Cell(m, 4).Style.NumberFormat.Format = "mmm-yy";
+                    worksheet.Cell(m, 5).Value = c.prod_count.ToString();
+                    worksheet.Cell(m, 6).Value = c.plan_viezd.ToString();
+                    worksheet.Cell(m, 7).Value = c.fact_viezd.ToString();
+                    worksheet.Cell(m, 8).Value = c.fact_viezd_max.ToString();
+                    worksheet.Cell(m, 9).Value = c.plan_zvonok.ToString();
+                    worksheet.Cell(m, 10).Value = c.fact_zvonok.ToString();
+                    worksheet.Cell(m, 11).Value = c.plan_smeta.ToString();
+                    worksheet.Cell(m, 12).Value = c.fact_smeta.ToString();
+                    worksheet.Cell(m, 15).Value = c.plan_zakr.ToString();
+                    worksheet.Cell(m, 15).Style.NumberFormat.Format = "#,#";
+
+                    worksheet.Cell(m, 16).Value = c.fact_zakr.ToString();
+                    worksheet.Cell(m, 16).Style.NumberFormat.Format = "#,#";
+
+
+                    worksheet.Cell(m, 20).Value = c.net_od.ToString();
+                    worksheet.Cell(m, 20).Style.NumberFormat.Format = "#,#";
+
+                    if (!c.plan_zakr.ToString().Equals(""))
+                    {
+                        worksheet.Cell(m, 19).Value = Double.Parse(c.plan_zakr.ToString()) * 0.2; // непоступившие ОД норма
+                        worksheet.Cell(m, 19).Style.NumberFormat.Format = "#,#";
+                    }
+
+                    worksheet.Cell(m, 23).Value = c.debitora.ToString(); // дебиторка
+                    worksheet.Cell(m, 23).Style.NumberFormat.Format = "#,#";
+
+
+                    worksheet.Cell(m, 25).Value = c.mehan_count.ToString();
+                    worksheet.Cell(m, 26).Value = c.virabotka.ToString();
+                    worksheet.Cell(m, 29).Value = c.vnutr_zakr.ToString();
+                    worksheet.Cell(m, 15).Style.NumberFormat.Format = "#,#";
+                    m++;
+                }
+            }
+
+            workbook.SaveAs(textBox1.Text + "\\motiv.xlsx");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+       
+        private static Excel.Workbook MyBook = null;
+        private static Excel.Application MyApp = null;
+        private static Excel.Worksheet MySheet = null;
+
+        class Kurator_Debitor
+        {
+            public String Kurator { get; set; }
+            public Double Deb_doc { get; set; }
+            public Double Deb_no_doc { get; set; }
+            public int Period { get; set; }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            style = NumberStyles.Number;
+            culture = CultureInfo.CreateSpecificCulture("en-GB");
+
+            double deb_current_no_doc, deb_current_doc;
+
+            List<int> list1 = new List<int>();
+            bool debitor = false;
+
+            List<String> Files = new List<string>();
+            List<String> list3 = new List<string>();
+
+            var Deb_current = new List<Kurator_Debitor>();
+
+            var Kurator = new List<Kurator_Filial>();
+
+           
+                // Only get files that begin with the letter "c."
+                Files = Directory.GetFiles(textBox5.Text, "*.xlsx").ToList();
+
+
+                //Формируем список куратор-филиал
+
+                var wb1 = new XLWorkbook(textBox6.Text + "\\Кураторы-филиалы.xlsx");
+                var ws1 = wb1.Worksheet(1);
+
+              
+
+                int excelRow = ws1.RowsUsed().Count();
+
+                int excelColumn = ws1.ColumnsUsed().Count();
+
+                for (int i = 1; i <= excelRow; i++)
+                {
+                  Kurator.Add(new Kurator_Filial() { Kurator = ws1.Cell(i, 1).Value.ToString(), Filial = ws1.Cell(i, 3).Value.ToString() });
+                }
+
+                wb1.Dispose();
                 
-                if (!c.kurator_fio.Equals(" "))
-                { 
+               listBox1.Items.Add("Обнаружено " + Files.Count + " файлов в каталоге.");
 
-                worksheet.Cell(m, 1).Value = c.kurator_fio.ToString();
-                worksheet.Cell(m, 2).Value = c.kurator_id.ToString();
-                worksheet.Cell(m, 3).Value = c.kurator_filial.ToString();
-                worksheet.Cell(m, 4).Value = c.Period.ToString();
-                worksheet.Cell(m, 4).Style.NumberFormat.Format = "mmm-yy";
-                worksheet.Cell(m, 5).Value = c.prod_count.ToString();
-                worksheet.Cell(m, 6).Value = c.plan_viezd.ToString();
-                worksheet.Cell(m, 7).Value = c.fact_viezd.ToString();
-                worksheet.Cell(m, 8).Value = c.fact_viezd_max.ToString();
-                worksheet.Cell(m, 9).Value = c.plan_zvonok.ToString();
-                worksheet.Cell(m, 10).Value = c.fact_zvonok.ToString();
-                worksheet.Cell(m, 11).Value = c.plan_smeta.ToString();
-                worksheet.Cell(m, 12).Value = c.fact_smeta.ToString();
-                worksheet.Cell(m, 15).Value = c.plan_zakr.ToString();
-                worksheet.Cell(m, 15).Style.NumberFormat.Format = "#,#";
+                int Files_count = 1;
 
-               worksheet.Cell(m, 16).Value = c.fact_zakr.ToString();
-                worksheet.Cell(m, 16).Style.NumberFormat.Format = "#,#";
+                foreach (string dir in Files)
+                {
+                    var wb = new XLWorkbook(dir);
+                    var ws = wb.Worksheet(1);
+
+                    debitor = false;
+
+                                  
+                     excelRow = ws.RowsUsed().Count();
+
+                     excelColumn = ws.ColumnsUsed().Count();
+
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        for (int j = 1; j <= excelColumn; j++)
+                        {
+                           
+                            if (ws.Cell(i, j).Value.ToString().Equals("Остаток - Просроченная задолженность на конец периода"))
+                            {
+                                listBox1.Items.Add("Обнаружен отчет дебеторка. Имя " + dir);
+                                listBox1.Update();
+                                debitor = true;
+
+
+                            }
+
+                            if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Филиал продажи"))
+                            {
+
+                                ws.Column(j).InsertColumnsBefore(1);
+                                ws.Cell(i, j).Value = "Ответственный";
+                                for (int k = i + 1; k <= excelRow; k++)
+                                {
+
+                                    ws.Cell(k, j).Value = from p in Kurator
+                                                 where p.Filial.Equals(ws.Cell(k, j-1).Value)
+                                                 select p.Kurator;
+
+                                }
+                                j++;
+                            }
+
+                            if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Дата прихода в архив"))
+                            {
+
+                                ws.Column(j).InsertColumnsBefore(1);
+                                ws.Cell(i, j).Value = "Документы";
+                                for (int k=i+1; k <= excelRow; k++)
+                                {
+
+                                    if (ws.Cell(k, j + 1).Value.Equals("") == true && ws.Cell(k, j + 2).Value.Equals("") == true)
+                                        ws.Cell(k, j).Value = "без документов";
+                                    else
+                                        ws.Cell(k, j).Value = "с документами";
+
+                                }
+                                    j++;
+                            }
+
+                        if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Задачи по ИНН"))
+                        {
+
+                            ws.Column(j).Delete();
+                         
+                            j++;
+                        }
+
+                    }
+                    }
+
+
+                   
+
+                    var source = ws.Range(3, 1,excelRow-2, excelColumn).AsTable();
+                    var range = source.DataRange;
+                    var header = ws.Range(3,1, 3, excelColumn);
+                    var dataRange = ws.Range(header.FirstCell(), range.LastCell());
+                    var name = "Сводная по дебиторке";
+                    var wsPT = wb.Worksheets.Add(name);
+                //    pt  = ws.Range(3, 1, excelRow - 2, excelColumn).CreatePivotTable(wsPT.Cell("A1"),name).;
+
+
+                    var pt = wsPT.PivotTables.AddNew(name, wsPT.Cell(1, 1), source);
+                  //  wsPT.Column(2).Style.NumberFormat.Format = "#,##.0";
+
+                    pt.AutofitColumns = true;
+           
+                
+                   
+
+                    pt.RowLabels.Add("Ответственный");
+                    pt.RowLabels.Add("Филиал отгрузки");             
+                    pt.ColumnLabels.Add("Документы");
+                    pt.Values.Add("Сальдо в рублях");
+
+                //   wb.SaveAs("D:\\YandexDisk\\Скрипты\\Дебитора\\"+ Files_count+".xlsx");
+
+                wb.Save();
+                wb.Dispose();
+
+
+                       
+                try
+                {
+                    MyApp = new Excel.Application();
+                    MyApp.Visible = true;
+
+
+                    MyBook = MyApp.Workbooks.Open(dir);
+
+                    MyBook.Save();
+                    MyApp.Quit();
+                }  
+                finally
+                {
+                    Marshal.ReleaseComObject(MyBook);
+                    Marshal.FinalReleaseComObject(MyApp);
+                    MyApp = null;
+                    MyBook = null;
+
                
 
-                worksheet.Cell(m, 20).Value = c.net_od.ToString();
-                worksheet.Cell(m, 20).Style.NumberFormat.Format = "#,#";
-
-                if (!c.net_od.ToString().Equals(""))
-                { 
-                worksheet.Cell(m, 19).Value = Double.Parse(c.net_od.ToString())*0.2; // непоступившие ОД норма
-                worksheet.Cell(m, 19).Style.NumberFormat.Format = "#,#";
+                GC.Collect();
                 }
-                    
-                        worksheet.Cell(m, 23).Value = c.debitora.ToString(); // дебиторка
-                    worksheet.Cell(m, 23).Style.NumberFormat.Format = "#,#";
-                  
 
-                worksheet.Cell(m, 25).Value = c.mehan_count.ToString();
-                worksheet.Cell(m, 26).Value = c.virabotka.ToString();
-                worksheet.Cell(m, 29).Value = c.vnutr_zakr.ToString();
-                worksheet.Cell(m, 15).Style.NumberFormat.Format = "#,#";
-                m++;
+
+                wb = new XLWorkbook(dir);
+                   ws = wb.Worksheet(2);
+
+                ws.Columns().AdjustToContents();
+
+                int excelRow2 = ws.RowsUsed().Count();
+
+                    for (int i = 1; i <= excelRow2; i++)
+                    {
+                    if (Double.TryParse(ws.Cell(i, 2).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws.Cell(i, 3).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
+
+                        Deb_current.Add(new Kurator_Debitor() { Kurator = ws.Cell(i, 1).Value.ToString(), Deb_no_doc = deb_current_no_doc, Deb_doc = deb_current_doc, Period = Files_count });
+                    }
+
+    
+
+                
+
+                    wb.Dispose();
+
+                    Files_count++;
                 }
+
+                var wb_1 = new XLWorkbook(Files[0]);
+                var ws_comp = wb_1.Worksheets.Add("Сравнение");
+
+                ws_comp.Cell(1, 1).Value = "Куратор";
+                ws_comp.Cell(2, 1).Value = (from p in Kurator                                
+                                      select p.Kurator).Distinct();
+
+                ws_comp.Cell(2, 2).Value = "без документов";
+                ws_comp.Cell(2, 3).Value = "с документами";
+                ws_comp.Cell(2, 4).Value = "Итого";
+          
+                ws_comp.Cell("B1").Value = "Срез первый";
+                ws_comp.Cell("E1").Value = "Срез второй";
+                ws_comp.Cell("H1").Value = "Изменение";
+                ws_comp.Range("B1:D1").Row(1).Merge();
+                ws_comp.Range("E1:G1").Row(1).Merge();
+                ws_comp.Range("H1:J1").Row(1).Merge();
+
+                ws_comp.Cell(2, 5).Value = "без документов";
+                ws_comp.Cell(2, 6).Value = "с документами";
+                ws_comp.Cell(2, 7).Value = "Итого";
+
+                ws_comp.Cell(2, 8).Value = "без документов";
+                ws_comp.Cell(2, 9).Value = "с документами";
+                ws_comp.Cell(2, 10).Value = "Итого";
+
+                excelRow = ws_comp.RowsUsed().Count();
+
+            ws_comp.Columns().AdjustToContents();
+
+            for (int k = 3; k <= excelRow; k++)
+                {
+
+                    // заполнение первого периода
+
+                    ws_comp.Cell(k, 2).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 1)
+                                          select p.Deb_no_doc;
+
+                    ws_comp.Cell(k, 3).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 1)
+                                               select p.Deb_doc;
+                if (Double.TryParse(ws_comp.Cell(k, 3).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws_comp.Cell(k, 2).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
+
+                    ws_comp.Cell(k, 4).Value = deb_current_no_doc + deb_current_doc;
+
+
+                    // заполнение второго периода
+
+                    ws_comp.Cell(k, 5).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 2)
+                                               select p.Deb_no_doc;
+
+                    ws_comp.Cell(k, 6).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 2)
+                                               select p.Deb_doc;
+
+                if (Double.TryParse(ws_comp.Cell(k, 5).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws_comp.Cell(k, 6).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
+
+                    ws_comp.Cell(k, 7).Value = deb_current_no_doc + deb_current_doc;
+
+                // заполнение сравнения
+
+               ws_comp.Cell(k, 8).FormulaA1 = "=B"+k+"-"+"E"+k; 
+
+                    ws_comp.Cell(k, 9).FormulaA1 = "=C" + k + "-" + "F" + k;
+
+                ws_comp.Cell(k, 10).FormulaA1 = "=D" + k + "-" + "G" + k;
+
+
             }
+
+
+
+                wb_1.Save();
+
+            /* }
+           catch (Exception f)
+            {
+                string s = String.Concat("The process failed: ", f.ToString());
+                listBox1.Items.Add(s); listBox1.Update();
+            }
+            */
+
+        }
+
+        public void UnmergeColumn(IXLWorksheet ws, int Column)
+        {
+
+            int excelRow = ws.RowsUsed().Count();
+
+            int StartRow = 1;
+
+            progressBar1.Value = 0;
+
+            progressBar1.Maximum = excelRow;
+
+           
+            for (int k = 1; k <= excelRow ; k++)
+            {
+
+                progressBar1.Value++;
+
+                if (ws.Range(StartRow, Column, k, Column).IsMerged() == true && ws.Cell(k, Column).Value.Equals("") == false)
+                {
+                    ws.Range(StartRow, Column, k - 1, Column).Unmerge();
+                    StartRow = k;
+
+                }
+                if (ws.Range(StartRow, Column, k, Column).IsMerged() == true && k == excelRow)
+                {
+                    ws.Range(StartRow, Column, excelRow+1, Column).Unmerge();
+                   
+                }
+
+                if (ws.Range(StartRow, Column, k, Column).IsMerged() == true && ws.Cell(k, Column).Value.Equals("") == false)
+                    StartRow = k;
+
+                if (ws.Cell(k, Column).Value.ToString().Equals("") == true && StartRow >1)
+                    ws.Cell(k, Column).Value = ws.Cell(k - 1, Column).Value;
+            }
+
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+
+            style = NumberStyles.Number;
+            culture = CultureInfo.CreateSpecificCulture("en-GB");
+
             
-            workbook.SaveAs(textBox1.Text + "\\motiv.xlsx");
-               // MessageBox.Show(«Документ создан!», «Внимание!», MessageBoxButtons.OK, MessageBoxIcon.Information);
+            List<int> list1 = new List<int>();
+            bool debitor = false;
+
+            List<String> Files = new List<string>();
+            List<String> list3 = new List<string>();
+
+            var Deb_current = new List<Kurator_Debitor>();
+
+            var Shtat = new List<Shtat>();
+
+
+            // Only get files that begin with the letter "c."
+            Files = Directory.GetFiles(textBox7.Text, "*.xlsx").ToList();
+
+
+            //Формируем список сотрудников с опорными должностями
+
+            var wb1 = new XLWorkbook(textBox6.Text + "\\Штат.xlsx");
+            var ws1 = wb1.Worksheet(1);
+
+
+
+            int excelRow = ws1.RowsUsed().Count();
+
+            int excelColumn = ws1.ColumnsUsed().Count();
+
+            for (int i = 1; i <= excelRow; i++)
+            {
+
+
+                Shtat.Add(new Shtat() { FIO = ws1.Cell(i, 5).Value.ToString(), Filial = ws1.Cell(i, 3).Value.ToString(), Tab = ws1.Cell(i, 4).Value.ToString(), OD = ws1.Cell(i, 10).Value.ToString() });
             }
-    }
+
+            wb1.Dispose();
+
+            /////////////////////////////////
+
+            listBox1.Items.Add("Обнаружено " + Files.Count + " файлов в каталоге.");
+
+            int Files_count = 1;
+
+            foreach (string dir in Files)
+            {
+                var wb = new XLWorkbook(dir);
+                var ws = wb.Worksheet(1);
+
+                debitor = false;
+
+
+                excelRow = ws.RowsUsed().Count();
+
+                excelColumn = ws.ColumnsUsed().Count();
+
+                int startRow = 0;
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    for (int j = 1; j <= excelColumn; j++)
+                    {
+
+                       
+
+                        if (ws.Cell(i, j).Value.ToString().Equals("№ ЗО"))
+                        {
+                            ws.Column(j).Delete();
+                        }
+                        if (ws.Cell(i, j).Value.ToString().Equals("Статус ЗО"))
+                        {
+                            ws.Column(j).Delete();
+                        }
+                        if (ws.Cell(i, j).Value.ToString().Equals("Тип ЗО"))
+                        {
+                            ws.Column(j).Delete();
+                        }
+                        if (ws.Cell(i, j).Value.ToString().Equals("Дата создания WIP"))
+                        {
+                            string rusdate, format;
+                            format = "dd.MM.yyyy h:mm:ss";
+                            CultureInfo provider = CultureInfo.CreateSpecificCulture("ru-RU");
+
+                            for (int k = 4; k <= excelRow; k++)
+                            {
+                                
+                                DateTime oldDate = DateTime.ParseExact(ws.Cell(k, 8).Value.ToString(), format, provider);
+                                DateTime newDate = DateTime.Now;
+
+                             
+                                TimeSpan ts = newDate - oldDate;
+
+                           
+                                ws.Cell(k, 9).Value = ts.Days;
+
+                            }
+                        }
+
+                        if (ws.Cell(i, j).Value.ToString().Equals("Сумма з/ч"))
+                        {
+                          
+                            for (int k = 4; k <= excelRow; k++)
+                            {
+
+                             if (ws.Cell(k, j).Value.ToString().Equals("0"))
+                                    ws.Row(k).Delete();
+
+                            }
+                        }
+
+                        if (ws.Cell(i, j).Value.ToString().Equals("представление: Repairs: Контроль незакрытых WIP заданий (drill6)"))
+                        {
+                            listBox1.Items.Add("Обнаружен отчет Открытые WIP. Имя " + dir);
+                            listBox1.Update();
+                            debitor = true;
+
+                          
+                            UnmergeColumn(ws, 6);
+                            listBox1.Items.Add("Разъединение строки 1 " + dir); listBox1.Update(); 
+                            UnmergeColumn(ws, 2);
+                            listBox1.Items.Add("Разъединение строки 2 " + dir); listBox1.Update();
+                            UnmergeColumn(ws, 7);
+                            listBox1.Items.Add("Разъединение строки 3 " + dir); listBox1.Update();
+
+                            listBox1.Items.Add(ws.Cell(3, 1).Value); listBox1.Update();
+                            listBox1.Items.Add(ws.Cell(3, 2).Value); listBox1.Update();
+                            listBox1.Items.Add(ws.Cell(3, 3).Value); listBox1.Update();
+                            listBox1.Items.Add(ws.Cell(3, 4).Value); listBox1.Update();
+                            listBox1.Items.Add(ws.Cell(3, 5).Value); listBox1.Update();
+                            listBox1.Items.Add(ws.Cell(3, 6).Value); listBox1.Update();
+                            listBox1.Items.Add(ws.Cell(3, 7).Value); listBox1.Update();
+
+митмитмит
+
+                            ws.Column(1).InsertColumnsAfter(1);
+                            ws.Cell(3, 2).Value = "Ответственный";
+
+                          
+
+                            for (int k = 4; k <= excelRow; k++)
+                            {
+
+                                ws.Cell(k, 2).Value = from p in Shtat
+                                                      where (p.Filial.Equals(ws.Cell(k, 3).Value)&&(p.OD.Equals("Заместитель директора филиала.")|| p.OD.Equals("Менеджер по продажам.")))
+                                                      select p.FIO;
+                                
+                            }
+
+                            wb.Save();
+
+                        }
+
+                      
+
+                    }
+                }
+
+                wb.Save();
+                wb.Dispose();
+                /*
+
+                var source = ws.Range(3, 1, excelRow - 2, excelColumn).AsTable();
+                var range = source.DataRange;
+                var header = ws.Range(3, 1, 3, excelColumn);
+                var dataRange = ws.Range(header.FirstCell(), range.LastCell());
+                var name = "Сводная по дебиторке";
+                var wsPT = wb.Worksheets.Add(name);
+                //    pt  = ws.Range(3, 1, excelRow - 2, excelColumn).CreatePivotTable(wsPT.Cell("A1"),name).;
+
+
+                var pt = wsPT.PivotTables.AddNew(name, wsPT.Cell(1, 1), source);
+                //  wsPT.Column(2).Style.NumberFormat.Format = "#,##.0";
+
+                pt.AutofitColumns = true;
+
+
+
+
+                pt.RowLabels.Add("Ответственный");
+                pt.RowLabels.Add("Филиал отгрузки");
+                pt.ColumnLabels.Add("Документы");
+                pt.Values.Add("Сальдо в рублях");
+
+                //   wb.SaveAs("D:\\YandexDisk\\Скрипты\\Дебитора\\"+ Files_count+".xlsx");
+                */
+
+
+
+                /*
+
+                try
+                {
+                    MyApp = new Excel.Application();
+                    MyApp.Visible = true;
+
+
+                    MyBook = MyApp.Workbooks.Open(dir);
+
+                    MyBook.Save();
+                    MyApp.Quit();
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(MyBook);
+                    Marshal.FinalReleaseComObject(MyApp);
+                    MyApp = null;
+                    MyBook = null;
+
+
+
+                    GC.Collect();
+                }*/
+
+            }
+
+            }
+        }
 }

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Zarplata" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ROMANNB-ПК;Initial Catalog=Zarplata;Integrated Security=True" SettingsObjectName="Зарплата.Properties.Settings" SettingsPropertyName="ZarplataConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Portal_base" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ROMAN-ПК\SQLEXPRESS;Initial Catalog=Portal_base;Integrated Security=True" SettingsObjectName="Зарплата.Properties.Settings" SettingsPropertyName="Portal_baseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Remont" Member="Remont">
     <Type Name="Remont">
       <Column Name="Remont_num" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -65,46 +65,6 @@
       <Column Name="[Percent]" Member="Percent" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Motivation" Member="Motivation">
-    <Type Name="Motivation">
-      <Column Name="kurator_fio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="kurator_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="kurator_filial" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="prod_count" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="plan_viezd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="fact_viezd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="fact_viezd_max" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="plan_zvonok" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="fact_zvonok" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="plan_smeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="fact_smeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="fact_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="plan_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="net_od" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="debitora" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="mehan_count" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="virabotka" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="vnutr_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Stavki" Member="Stavki">
-    <Type Name="Stavki">
-      <Column Name="Tab_num" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="FIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Oklad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.crm_max" Member="crm_max">
-    <Type Name="crm_max">
-      <Column Name="Tab_num" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="Filial" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="viezd_vsego" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="viezd_pers" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Test_1" Member="Test_1">
     <Type Name="Test_1">
       <Column Name="Remont_num" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
@@ -137,6 +97,55 @@
       <Column Name="Procent_oform_mat" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Procent_oform_trud" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Period" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Motivation" Member="Motivation">
+    <Type Name="Motivation">
+      <Column Name="kurator_fio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="kurator_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kurator_filial" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prod_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="plan_viezd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fact_viezd" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="plan_zvonok" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fact_zvonok" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="plan_smeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fact_smeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fact_viezd_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="K_crm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_crm" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="plan_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fact_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="K_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="debitora" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bonus_deb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="net_od" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bonus_OD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="mehan_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="virabotka" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="K_vir" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_vir" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="vnutr_zakr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ZP_vnutr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Sum_motiv" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stavki" Member="Stavki">
+    <Type Name="Stavki">
+      <Column Name="FIO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tab_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Oklad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.crm_max" Member="crm_max">
+    <Type Name="crm_max">
+      <Column Name="Tab_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Filial" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="viezd_pers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="viezd_vsego" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
