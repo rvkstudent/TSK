@@ -1701,9 +1701,15 @@ namespace Зарплата
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+             string format = "dd.MM.yyyy h:mm:ss";
+                         
+             CultureInfo provider = CultureInfo.CreateSpecificCulture("ru-RU");
             style = NumberStyles.Number;
             culture = CultureInfo.CreateSpecificCulture("en-GB");
+
+            List<DateTime> last_date = new List<DateTime>();
+
+            
 
             double deb_current_no_doc, deb_current_doc;
 
@@ -1735,7 +1741,7 @@ namespace Зарплата
 
                 for (int i = 1; i <= excelRow; i++)
                 {
-                  Kurator.Add(new Kurator_Filial() { Kurator = ws1.Cell(i, 1).Value.ToString(), Filial = ws1.Cell(i, 3).Value.ToString() });
+                  Kurator.Add(new Kurator_Filial() { RegDir = ws1.Cell(i, 4).Value.ToString(), Kurator = ws1.Cell(i, 1).Value.ToString(), Filial = ws1.Cell(i, 3).Value.ToString() });
                 }
 
                 wb1.Dispose();
@@ -1744,8 +1750,13 @@ namespace Зарплата
 
                 int Files_count = 1;
 
+           
+
                 foreach (string dir in Files)
                 {
+
+                 last_date.Add( DateTime.Today.AddMonths(-2));
+
                     var wb = new XLWorkbook(dir);
                     var ws = wb.Worksheet(1);
 
@@ -1773,17 +1784,24 @@ namespace Зарплата
                             if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Филиал продажи"))
                             {
 
-                                ws.Column(j).InsertColumnsBefore(1);
+                                ws.Column(j).InsertColumnsBefore(2);
                                 ws.Cell(i, j).Value = "Ответственный";
+                                ws.Cell(i, j+1).Value = "Региональный директор";
+
                                 for (int k = i + 1; k <= excelRow; k++)
                                 {
 
                                     ws.Cell(k, j).Value = from p in Kurator
                                                  where p.Filial.Equals(ws.Cell(k, j-1).Value)
                                                  select p.Kurator;
+                                     ws.Cell(k, j+1).Value = from p in Kurator
+                                                 where p.Filial.Equals(ws.Cell(k, j-1).Value)
+                                                 select p.RegDir;
 
                                 }
-                                j++;
+                                
+                                
+                                j=j+2;
                             }
 
                             if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Дата прихода в архив"))
@@ -1803,6 +1821,28 @@ namespace Зарплата
                                     j++;
                             }
 
+                             if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Срок"))
+                            {
+
+                             DateTime cur_date =  DateTime.Today.AddMonths(-2);
+                                
+                              
+
+                             for (int k = i + 1; k <= excelRow; k++)
+                                {
+
+                                cur_date = DateTime.ParseExact(ws.Cell(k, j).Value.ToString(), format, provider);
+
+                                if (cur_date.CompareTo(last_date[Files_count-1]) >1 )
+                                last_date[Files_count-1] = cur_date;
+
+                                  
+                                }
+
+                            
+                                
+                            }
+
                         if (debitor == true && ws.Cell(i, j).Value.ToString().Equals("Задачи по ИНН"))
                         {
 
@@ -1815,7 +1855,7 @@ namespace Зарплата
                     }
 
 
-                   
+                    wb.Save();
 
                     var source = ws.Range(3, 1,excelRow-2, excelColumn).AsTable();
                     var range = source.DataRange;
@@ -1833,7 +1873,7 @@ namespace Зарплата
            
                 
                    
-
+                    pt.RowLabels.Add("Региональный директор");
                     pt.RowLabels.Add("Ответственный");
                     pt.RowLabels.Add("Филиал отгрузки");             
                     pt.ColumnLabels.Add("Документы");
@@ -1896,44 +1936,63 @@ namespace Зарплата
                 var wb_1 = new XLWorkbook(Files[0]);
                 var ws_comp = wb_1.Worksheets.Add("Сравнение");
 
+            int []PeriodFirst ={1,2};
+                if (last_date[0] > last_date[1])
+                    {
+                 ws_comp.Cell("B1").Value = "Срез первый ("+last_date[0].ToString()+")";
+                ws_comp.Cell("E1").Value = "Срез второй ("+last_date[1].ToString()+")";
+                    PeriodFirst[0] = 1;
+                 PeriodFirst[1] = 2;
+                    }
+                else
+                    {
+                  ws_comp.Cell("B1").Value = "Срез первый ("+last_date[1].ToString()+")";
+                ws_comp.Cell("E1").Value = "Срез второй ("+last_date[0].ToString()+")";
+                      PeriodFirst[0] = 2;
+                 PeriodFirst[1] = 1;
+                    }
+
+
                 ws_comp.Cell(1, 1).Value = "Куратор";
                 ws_comp.Cell(2, 1).Value = (from p in Kurator                                
                                       select p.Kurator).Distinct();
 
-                ws_comp.Cell(2, 2).Value = "без документов";
-                ws_comp.Cell(2, 3).Value = "с документами";
+                ws_comp.Cell(2, 3).Value = "без документов";
+                ws_comp.Cell(2, 2).Value = "с документами";
                 ws_comp.Cell(2, 4).Value = "Итого";
           
-                ws_comp.Cell("B1").Value = "Срез первый";
-                ws_comp.Cell("E1").Value = "Срез второй";
+               
                 ws_comp.Cell("H1").Value = "Изменение";
                 ws_comp.Range("B1:D1").Row(1).Merge();
                 ws_comp.Range("E1:G1").Row(1).Merge();
                 ws_comp.Range("H1:J1").Row(1).Merge();
 
-                ws_comp.Cell(2, 5).Value = "без документов";
-                ws_comp.Cell(2, 6).Value = "с документами";
+                ws_comp.Cell(2, 6).Value = "без документов";
+                ws_comp.Cell(2, 5).Value = "с документами";
                 ws_comp.Cell(2, 7).Value = "Итого";
 
-                ws_comp.Cell(2, 8).Value = "без документов";
-                ws_comp.Cell(2, 9).Value = "с документами";
+                ws_comp.Cell(2, 9).Value = "без документов";
+                ws_comp.Cell(2, 8).Value = "с документами";
                 ws_comp.Cell(2, 10).Value = "Итого";
 
                 excelRow = ws_comp.RowsUsed().Count();
 
             ws_comp.Columns().AdjustToContents();
 
+            
+
             for (int k = 3; k <= excelRow; k++)
                 {
 
+                
                     // заполнение первого периода
 
                     ws_comp.Cell(k, 2).Value = from p in Deb_current
-                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 1)
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[0])
                                           select p.Deb_no_doc;
 
                     ws_comp.Cell(k, 3).Value = from p in Deb_current
-                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 1)
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[0])
                                                select p.Deb_doc;
                 if (Double.TryParse(ws_comp.Cell(k, 3).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws_comp.Cell(k, 2).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
 
@@ -1943,11 +2002,11 @@ namespace Зарплата
                     // заполнение второго периода
 
                     ws_comp.Cell(k, 5).Value = from p in Deb_current
-                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 2)
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[1])
                                                select p.Deb_no_doc;
 
                     ws_comp.Cell(k, 6).Value = from p in Deb_current
-                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == 2)
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[1])
                                                select p.Deb_doc;
 
                 if (Double.TryParse(ws_comp.Cell(k, 5).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws_comp.Cell(k, 6).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
@@ -1964,6 +2023,79 @@ namespace Зарплата
 
 
             }
+
+             
+                ws_comp = wb_1.Worksheets.Add("Сравнение 2");
+
+                ws_comp.Cell(1, 1).Value = "Региональный Директор";
+                ws_comp.Cell(2, 1).Value = (from p in Kurator                                
+                                      select p.RegDir).Distinct();
+
+                ws_comp.Cell(2, 3).Value = "без документов";
+                ws_comp.Cell(2, 2).Value = "с документами";
+                ws_comp.Cell(2, 4).Value = "Итого";
+          
+                ws_comp.Cell("B1").Value = "Срез первый";
+                ws_comp.Cell("E1").Value = "Срез второй";
+                ws_comp.Cell("H1").Value = "Изменение";
+                ws_comp.Range("B1:D1").Row(1).Merge();
+                ws_comp.Range("E1:G1").Row(1).Merge();
+                ws_comp.Range("H1:J1").Row(1).Merge();
+
+                ws_comp.Cell(2, 6).Value = "без документов";
+                ws_comp.Cell(2, 5).Value = "с документами";
+                ws_comp.Cell(2, 7).Value = "Итого";
+
+                ws_comp.Cell(2, 9).Value = "без документов";
+                ws_comp.Cell(2, 8).Value = "с документами";
+                ws_comp.Cell(2, 10).Value = "Итого";
+
+                excelRow = ws_comp.RowsUsed().Count();
+
+            ws_comp.Columns().AdjustToContents();
+
+            for (int k = 3; k <= excelRow; k++)
+                {
+
+                    // заполнение первого периода
+
+                    ws_comp.Cell(k, 2).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[0])
+                                          select p.Deb_no_doc;
+
+                    ws_comp.Cell(k, 3).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[0])
+                                               select p.Deb_doc;
+                if (Double.TryParse(ws_comp.Cell(k, 3).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws_comp.Cell(k, 2).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
+
+                    ws_comp.Cell(k, 4).Value = deb_current_no_doc + deb_current_doc;
+
+
+                    // заполнение второго периода
+
+                    ws_comp.Cell(k, 5).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[1])
+                                               select p.Deb_no_doc;
+
+                    ws_comp.Cell(k, 6).Value = from p in Deb_current
+                                               where (p.Kurator.Equals(ws_comp.Cell(k, 1).Value) && p.Period == PeriodFirst[1])
+                                               select p.Deb_doc;
+
+                if (Double.TryParse(ws_comp.Cell(k, 5).Value.ToString().Replace(",", "."), style, culture, out deb_current_no_doc) == true && Double.TryParse(ws_comp.Cell(k, 6).Value.ToString().Replace(",", "."), style, culture, out deb_current_doc) == true)
+
+                    ws_comp.Cell(k, 7).Value = deb_current_no_doc + deb_current_doc;
+
+                // заполнение сравнения
+
+               ws_comp.Cell(k, 8).FormulaA1 = "=B"+k+"-"+"E"+k; 
+
+                    ws_comp.Cell(k, 9).FormulaA1 = "=C" + k + "-" + "F" + k;
+
+                ws_comp.Cell(k, 10).FormulaA1 = "=D" + k + "-" + "G" + k;
+
+
+            }
+
 
 
 
@@ -2153,7 +2285,7 @@ namespace Зарплата
                             listBox1.Items.Add(ws.Cell(3, 6).Value); listBox1.Update();
                             listBox1.Items.Add(ws.Cell(3, 7).Value); listBox1.Update();
 
-митмитмит
+
 
                             ws.Column(1).InsertColumnsAfter(1);
                             ws.Cell(3, 2).Value = "Ответственный";
