@@ -51,9 +51,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -64,13 +66,13 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(244, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "D:\\YandexDisk\\Кураторы июнь";
+            this.textBox1.Text = "D:\\YandexDisk\\Расчет кураторов";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "июнь-2017"});
+            "август-2017"});
             this.comboBox1.Location = new System.Drawing.Point(12, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -246,6 +248,7 @@
             this.button2.TabIndex = 23;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // groupBox1
             // 
@@ -273,6 +276,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Обработка WIP и ЗнР";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(143, 19);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(153, 23);
+            this.button5.TabIndex = 25;
+            this.button5.Text = "Скрипт WIP";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(28, 92);
@@ -290,21 +303,33 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Папка файлов";
             // 
-            // button5
+            // listBox2
             // 
-            this.button5.Location = new System.Drawing.Point(143, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(153, 23);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Скрипт WIP";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Items.AddRange(new object[] {
+            "Test.txt"});
+            this.listBox2.Location = new System.Drawing.Point(15, 461);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(252, 95);
+            this.listBox2.TabIndex = 26;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(282, 461);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 27;
+            this.button6.Text = "Запуск";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1310, 614);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
@@ -363,6 +388,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button button6;
     }
 }
 

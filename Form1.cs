@@ -9,6 +9,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Threading;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Зарплата
 {
@@ -40,7 +42,7 @@ namespace Зарплата
             var ws = wb.Worksheet(1);
 
             System.Data.SqlClient.SqlConnection sqlConnection1 =
-                                  new System.Data.SqlClient.SqlConnection(@"Data Source=ROMANNB-ПК;Initial Catalog=Zarplata;Integrated Security=True");
+                                  new System.Data.SqlClient.SqlConnection(@"Data Source=ROMAN-ПК\SQLEXPRESS;Initial Catalog=Portal_base;Integrated Security=True");
 
             System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
@@ -1201,7 +1203,7 @@ namespace Зарплата
             string Period = "'%" + comboBox1.SelectedItem.ToString() + "%'";
 
             System.Data.SqlClient.SqlConnection sqlConnection1 =
-                                  new System.Data.SqlClient.SqlConnection(@"Data Source=ROMANNB-ПК;Initial Catalog=Zarplata;Integrated Security=True");
+                                  new System.Data.SqlClient.SqlConnection(@"Data Source=ROMAN-ПК\SQLEXPRESS;Initial Catalog=Portal_base;Integrated Security=True");
 
             System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
@@ -2153,7 +2155,7 @@ namespace Зарплата
                             listBox1.Items.Add(ws.Cell(3, 6).Value); listBox1.Update();
                             listBox1.Items.Add(ws.Cell(3, 7).Value); listBox1.Update();
 
-митмитмит
+
 
                             ws.Column(1).InsertColumnsAfter(1);
                             ws.Cell(3, 2).Value = "Ответственный";
@@ -2237,5 +2239,272 @@ namespace Зарплата
             }
 
             }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
         }
+        private string GetList(string filename, int list_num)
+        {
+            var wb1 = new XLWorkbook("d:\\XLTest\\" + filename);
+            var ws = wb1.Worksheet(list_num);
+
+            string name = ws.Name;
+
+            wb1.Dispose();
+
+            return "'" + "d:\\XLTest\\"+ "[" + filename + "]" + name + "'!";
+            
+
+        }
+
+        private void ParceXL(List<string> commands)
+        {
+
+
+            Dictionary<string, string> files = new Dictionary<string, string>();
+            Dictionary<string, string> ranges = new Dictionary<string, string>();
+
+            foreach (var command in commands)
+            {
+                string com = "";
+                string[] prm = new string[10];
+
+
+                com = command.Split("(".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0];
+
+                prm = (command.Split("(".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1].Split(")".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0]).Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                
+                if (com.Equals("Файл", StringComparison.InvariantCultureIgnoreCase) && prm[0]!="" && prm[0] != null && prm[1] != "" && prm[1] != null) // добавляем строку до столбца по номеру или до слолбца по названию
+                 files.Add(prm[0], prm[1].TrimEnd().TrimStart());
+
+                // '[Дебиторка.xlsx]представление_ trx_III_ контрол'!$I:$O
+
+                if (com.Equals("Диапазон", StringComparison.InvariantCultureIgnoreCase) && prm[0] != "" && prm[0] != null && prm[1] != "" && prm[1] != null) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
+                    string filename;
+
+                    if(files.TryGetValue(prm[1].TrimStart().TrimEnd(), out filename))
+                    {
+                        ranges.Add(prm[0], GetList(filename, Convert.ToInt32(prm[2])) + prm[3].TrimEnd().TrimStart());
+                    }
+
+                }
+                  
+
+
+            }
+                foreach (var command in commands)
+            {
+
+                string com = "";
+                string [] prm = new string[10];
+
+               
+                com = command.Split("(".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0];
+                
+                prm = (command.Split("(".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1].Split(")".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0]).Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+                if (com.Equals("ВПР", StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
+                    string worksheet_name = "";
+                    int worksheet_num = 0;
+                    int column_num = 1;
+                    int row_num = 1;
+                    string column_name = "";
+
+                    int strok_vniz = Convert.ToInt32(prm[4]);
+
+                    string filename = prm[0];
+                    files.TryGetValue(prm[0], out filename);
+
+                    string range = prm[5];
+                    ranges.TryGetValue(prm[5], out range);
+                    
+                    var wb1 = new XLWorkbook("d:\\XLTest\\" + filename);
+                    IXLWorksheet ws;
+
+                    if (prm[2] != "" && prm[2] != null)
+                    {
+
+                        try
+                        {
+                            column_num = Int32.Parse(prm[2]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            column_name = prm[2];
+                        }
+
+
+                    }
+                    if (prm[1] != "" && prm[1] != null)
+                    {
+
+                        try
+                        {
+                            worksheet_num = Int32.Parse(prm[1]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            worksheet_name = prm[1];
+                        }
+
+
+                    }
+                    
+                    if (worksheet_name != "")
+                        ws = wb1.Worksheet(worksheet_name);
+                    else
+                        ws = wb1.Worksheet(worksheet_num);
+
+                    for (int i = 1; i < ws.CellsUsed().Count(); i++)
+                    {
+                        if (ws.Cell(i, column_num).Value.Equals("") == false)
+                        {
+                            row_num = i;
+                            break;
+                        }
+                    }
+
+
+                    if (strok_vniz > 0)
+                    {
+                        for(int i = row_num+1;i<= strok_vniz+ row_num + 1;i++ )
+                        { 
+                       var cellWithFormulaA1 = ws.Cell(i, column_num);
+                            cellWithFormulaA1.FormulaA1 = "==ВПР(" + ws.Cell(i, column_num-1).Address.ToString() + ";" + range + ";" + prm[6]+";1)";
+                           
+                           ws.Cell(i, column_num).Value = cellWithFormulaA1.FormulaA1;
+                        
+                        }
+
+                    }
+
+                  
+
+                    wb1.Save();
+
+                    wb1.Dispose();
+                }
+
+
+                    #region Добавить строку
+
+                    if (com.Equals("ДобавитьСтроку",StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
+                    string filename = prm[0];
+                    string worksheet_name = "";
+                    int worksheet_num = 0;
+
+                    int column_num = 1;
+                    int row_num = 1;
+                    string column_name = "";
+
+                    files.TryGetValue(prm[0], out filename);
+                  
+                    if (prm[2]!="" && prm[2] != null)
+                    {
+
+                        try
+                        {
+                            column_num = Int32.Parse(prm[2]);
+                           
+                        }
+                        catch (FormatException)
+                        {
+                             column_name = prm[2];
+                        }
+                       
+
+                    }
+                    if (prm[1] != "" && prm[1] != null)
+                    {
+
+                        try
+                        {
+                            worksheet_num = Int32.Parse(prm[1]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            worksheet_name = prm[1];
+                        }
+
+
+                    }
+
+                    var wb1 = new XLWorkbook("d:\\XLTest\\" + filename);
+
+                    
+
+                    IXLWorksheet ws;
+
+                    
+
+                    if (worksheet_name != "")                    
+                        ws = wb1.Worksheet(worksheet_name);                   
+                    else                   
+                        ws = wb1.Worksheet(worksheet_num);
+
+                    if (column_name != "")
+                        column_num = ws.Column(column_name).ColumnNumber();
+
+                    for(int i = 1; i < ws.CellsUsed().Count(); i++)
+                    {
+                        if (ws.Cell(i, column_num).Value.Equals("") == false)
+                        {
+                            row_num = i;
+                            break;
+                        }
+                    }
+
+                    ws.Column(column_num).InsertColumnsBefore(1);
+                    ws.Cell(row_num, column_num).Value = prm[3].ToString();
+
+                    string str = ws.Range(1,1,4,4).RangeAddress.ToString();
+
+                    wb1.Save();
+
+                    wb1.Dispose();
+
+                }
+                #endregion
+
+
+            }
+
+            foreach (var range in ranges)
+            listBox1.Items.Add(range);
+
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (listBox2.Items.Count > 0)
+                 {
+                foreach(var item in listBox2.Items)
+                {
+                 List<string> lst= new List<string>();
+                string line;
+
+                // Read the file and display it line by line.  
+                System.IO.StreamReader file =
+                    new System.IO.StreamReader(@"d:\\XLTest\\"+ item.ToString(), Encoding.GetEncoding(1251));
+
+                while ((line = file.ReadLine()) != null)
+                lst.Add(line);
+                 
+              
+
+                file.Close();
+
+                    ParceXL(lst);
+                    lst.Clear();
+
+                }
+            }
+        }
+    }
 }
