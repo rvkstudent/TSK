@@ -212,7 +212,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(268, 20);
             this.textBox5.TabIndex = 19;
-            this.textBox5.Text = "D:\\YandexDisk\\Скрипты\\Дебитора";
+            this.textBox5.Text = "D:\\Отчеты\\Дебиторка";
             // 
             // textBox6
             // 
@@ -220,7 +220,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(268, 20);
             this.textBox6.TabIndex = 20;
-            this.textBox6.Text = "D:\\YandexDisk\\Скрипты\\Константы";
+            this.textBox6.Text = "D:\\Отчеты\\Константы";
             // 
             // label4
             // 
