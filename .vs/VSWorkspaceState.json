@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\packages"
+    "\\bin",
+    "\\packages",
+    "\\Properties"
   ],
-  "SelectedNode": "\\Form1.cs",
+  "SelectedNode": "\\Зарплата.sln",
   "PreviewInSolutionExplorer": false
 }
