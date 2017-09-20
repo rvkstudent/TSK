@@ -2410,20 +2410,20 @@ namespace Зарплата
             List<int> col = new List<int>();
 
             int f_cell = ws.FirstCellUsed().Address.RowNumber;
-            int last_column = ws.LastCellUsed().Address.ColumnNumber;
+            int last_column = ws.LastColumnUsed().ColumnNumber();
 
-            for (int i = 1; i < last_column; i++)
-                for (int j = f_cell; i < f_cell+5; i++)
+            for (int i = f_cell; i <= f_cell + 5; i++)
+                for (int j = 1; j <= last_column; j++)
+                {
+                    if (ws.Cell(i, j).Value.ToString().Equals(name))
                     {
-                    if(ws.Cell(j,i).Value.Equals(name))
-                        {
-                        col.Add(ws.Cell(j,i).Address.RowNumber);col.Add(ws.Cell(j,i).Address.ColumnNumber);
-                        
-                        }
-               
+                        col.Add(ws.Cell(i, j).Address.RowNumber); col.Add(ws.Cell(i, j).Address.ColumnNumber);
+
                     }
 
-          return col;
+                }
+
+            return col;
 
             wb1.Dispose();
             
@@ -2461,12 +2461,12 @@ namespace Зарплата
             int f_cell = ws.FirstCellUsed().Address.RowNumber;
             int last_column = ws.LastColumnUsed().ColumnNumber();
 
-            for (int i = 1; i < last_column; i++)
-                for (int j = f_cell; j < f_cell+5; j++)
+            for (int i = f_cell; i <= f_cell+5; i++)
+                for (int j = 1; j <= last_column; j++)
                     {
-                    if(ws.Cell(j,i).Value.ToString().Equals(name))
+                    if(ws.Cell(i,j).Value.ToString().Equals(name))
                         {
-                        col.Add(ws.Cell(j,i).Address.RowNumber);col.Add(ws.Cell(j,i).Address.ColumnNumber);
+                        col.Add(ws.Cell(i,j).Address.RowNumber);col.Add(ws.Cell(i,j).Address.ColumnNumber);
                      
                         }
                
@@ -2488,7 +2488,7 @@ namespace Зарплата
             foreach (var file in Files)
                 {
                
-                if (GetColumnByName(file, "1", str) != null)
+                if (GetColumnByName(file, "1", str).Count > 0)
                 ret=  file.ToString().Split("\\".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Last();
                
                    
@@ -2585,8 +2585,6 @@ namespace Зарплата
 
                 if (com.Equals("ВПР", StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
                 {
-                    if (prm.Count() == 7)
-                        {}
 
                     string worksheet_name = "";
                     int worksheet_num = 0;
@@ -2644,65 +2642,79 @@ namespace Зарплата
 
                     int strok_vniz = 0;
 
-                if(prm.Count() == 7)
-                       {
-                 range = prm[5];
-                    ranges.TryGetValue(prm[5], out range);
+                   
+                    if (prm.Count() == 7)
+                    {
+
+                        range = prm[5];
+                        ranges.TryGetValue(prm[5], out range);
                         strok_vniz = Convert.ToInt32(prm[4]);
 
-                    for (int i = 1; i < ws.CellsUsed().Count(); i++)
-                    {
-                        if (ws.Cell(i, column_num).Value.Equals("") == false)
+                        //"'C:\\Отчеты\\Константы\\[Кураторы-филиалы.xlsx]Лист1'!$A:$E"
+                        
+                        for (int i = 1; i < ws.CellsUsed().Count(); i++)
                         {
-                            row_num = i;
-                            break;
+                            if (ws.Cell(i, column_num).Value.Equals("") == false)
+                            {
+                                row_num = i;
+                                break;
+                            }
                         }
-                    }
 
                     }      
 
                     if(prm.Count() == 6)
                        {
                          range = prm[4];
-                    ranges.TryGetValue(prm[4], out range);
-                          strok_vniz = Convert.ToInt32(prm[3]);
+                         ranges.TryGetValue(prm[4], out range);
+                         strok_vniz = Convert.ToInt32(prm[3]);
+                        
+                        row_num = GetColumnByName(file_dir,prm[1],prm[2])[0];
+                        column_num =  GetColumnByName(file_dir,prm[1],prm[2])[1];
 
-                           row_num = GetColumnByName(file_dir,prm[1],prm[2])[0];
-                           column_num =  GetColumnByName(file_dir,prm[1],prm[2])[1];
+
                         }
                     
-                        
+                    var wb2 = new XLWorkbook(range.Split("'".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0].Split("[]".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0] + range.Split("'".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0].Split("[]".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
+                    var ws2 = wb2.Worksheet(range.Split("'".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0].Split("[]".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[2]);
+
+                    IXLRange range_2 = ws2.Range(range.Split("!".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
+
                     int cells_in_table = ws.RowsUsed().Count();
+
+                    //var range_2 = ws2.Range(range.Split("!".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[1]);
 
                     if (strok_vniz > 0)
                     {
                         for(int i = row_num+1;i<= strok_vniz+ row_num + 1;i++ )
                         { 
-                       var cellWithFormulaA1 = ws.Cell(i, column_num);
-                            cellWithFormulaA1.FormulaA1 = "=VLOOKUP(" + ws.Cell(i, column_num+1).Address.ToString() + "," + range + "," + prm[6]+",0)";
-                           
-                          ws.Cell(i, column_num).Value = cellWithFormulaA1.Value;
-                        
-                        }
+                            for(int j = range_2.FirstRowUsed().RowNumber(); j <= range_2.LastRowUsed().RowNumber();j++ )
+                            {
+                                if (ws.Cell(i, column_num + 1).Value.Equals(ws2.Cell(j, range_2.FirstColumnUsed().ColumnNumber()).Value))
+                                    ws.Cell(i, column_num).Value = ws2.Cell(j, Convert.ToInt32(prm[6])).Value;
 
+
+                            }
+                        }
                     }
                     
                     if (strok_vniz == 0)
                     {
                         for(int i = row_num+1;i <= cells_in_table - row_num + 1;i++ )
-                        { 
-                       var cellWithFormulaA1 = ws.Cell(i, column_num);
-                            cellWithFormulaA1.FormulaA1 = "=VLOOKUP(" + ws.Cell(i, column_num+1).Address.ToString() + "," + range + "," + prm[5]+",0)";
-                         
-                          
-                         var value = wb1.Evaluate("=VLOOKUP(" + ws.Cell(i, column_num+1).Address.ToString() + "," + range + "," + prm[5]+",0))");
-                             ws.Cell(i, column_num).Value =value;
+                        {
+                            for (int j = range_2.FirstRowUsed().RowNumber(); j <= range_2.LastRowUsed().RowNumber(); j++)
+                            {
+                                if (ws.Cell(i, column_num + 1).Value.Equals(ws2.Cell(j, range_2.FirstColumnUsed().ColumnNumber()).Value))
+                                    ws.Cell(i, column_num).Value = ws2.Cell(j, Convert.ToInt32(prm[5])).Value;
+
+
+                            }
                         }
 
                     }
 
 
-                  
+                    wb2.Dispose();
 
                     wb1.Save();
 
@@ -2710,9 +2722,77 @@ namespace Зарплата
                 }
 
 
-                    #region Добавить строку
+                #region Добавить строку
+                if (com.Equals("УдалитьСтолбец", StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
 
-                    if (com.Equals("ДобавитьСтроку",StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                    string worksheet_name = "";
+                    int worksheet_num = 0;
+
+                    int column_num = 1;
+                    int row_num = 1;
+                    string column_name = "";
+
+                    string filename = prm[0];
+                    List<string> file_dir = new List<string>();
+                    files.TryGetValue(prm[0], out file_dir);
+                    filename = file_dir[0] + file_dir[1];
+
+                    if (prm[2] != "" && prm[2] != null)
+                    {
+
+                        try
+                        {
+                            column_num = Int32.Parse(prm[2]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            column_name = prm[2];
+                        }
+
+
+                    }
+                    if (prm[1] != "" && prm[1] != null)
+                    {
+
+                        try
+                        {
+                            worksheet_num = Int32.Parse(prm[1]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            worksheet_name = prm[1];
+                        }
+
+
+                    }
+
+                    var wb1 = new XLWorkbook(filename);
+
+
+
+                    IXLWorksheet ws;
+
+
+
+                    if (worksheet_name != "")
+                        ws = wb1.Worksheet(worksheet_name);
+                    else
+                        ws = wb1.Worksheet(worksheet_num);
+
+                    if (column_name != "")
+                        column_num = GetColumnByName(file_dir, prm[1], prm[2])[1];
+
+                    ws.Column(column_num).Delete();
+                   
+                    wb1.Save();
+
+                    wb1.Dispose();
+
+                }
+                if (com.Equals("ДобавитьСтроку",StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
                 {
                    
                     string worksheet_name = "";
@@ -2796,6 +2876,307 @@ namespace Зарплата
                 }
                 #endregion
 
+                if (com.Equals("ДобавитьДокументы", StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
+
+                    string worksheet_name = "";
+                    int worksheet_num = 0;
+
+                    int column_num = 1;
+                    int row_num = 1;
+                    string column_name = "";
+
+                    string filename = prm[0];
+                    List<string> file_dir = new List<string>();
+                    files.TryGetValue(prm[0], out file_dir);
+                    filename = file_dir[0] + file_dir[1];
+
+                    if (prm[2] != "" && prm[2] != null)
+                    {
+
+                        try
+                        {
+                            column_num = Int32.Parse(prm[2]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            column_name = prm[2];
+                        }
+
+
+                    }
+                    if (prm[1] != "" && prm[1] != null)
+                    {
+
+                        try
+                        {
+                            worksheet_num = Int32.Parse(prm[1]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            worksheet_name = prm[1];
+                        }
+
+
+                    }
+
+                    var wb1 = new XLWorkbook(filename);
+
+
+
+                    IXLWorksheet ws;
+
+
+
+                    if (worksheet_name != "")
+                        ws = wb1.Worksheet(worksheet_name);
+                    else
+                        ws = wb1.Worksheet(worksheet_num);
+
+                    if (column_name != "")
+                        column_num = GetColumnByName(file_dir, prm[1], prm[2])[1];
+
+                    int total_rows = ws.RowsUsed().Count();
+
+                    for (int i = 1; i < total_rows; i++)
+                    {
+                        if (ws.Cell(i, column_num).Value.Equals("") == false)
+                        {
+                            row_num = i;
+                            break;
+                        }
+                    }
+
+
+                    ws.Column(column_num).InsertColumnsBefore(1);
+                    ws.Cell(row_num, column_num).Value = prm[3].ToString();
+
+
+                    for (int i = row_num + 1; i < total_rows; i++)
+                    {
+                        if (ws.Cell(i, column_num + 1).Value.Equals("") == true && ws.Cell(i, column_num + 2).Value.Equals("") == true)
+                        {
+
+                            ws.Cell(i, column_num).Value = "без документов";
+
+                        }
+                        if (ws.Cell(i, column_num + 1).Value.Equals("")==false || ws.Cell(i, column_num + 2).Value.Equals("") == false)
+                        
+                         {
+                            ws.Cell(i, column_num).Value = "с документами";
+
+                        }
+
+                    }
+
+
+                    string str = ws.Range(1, 1, 4, 4).RangeAddress.ToString();
+
+                    wb1.Save();
+
+                    wb1.Dispose();
+
+                }
+
+                if (com.Equals("ПоКлиенту", StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
+
+                    string worksheet_name = "";
+                    int worksheet_num = 0;
+
+                    int column_num = 1;
+                    int row_num = 1;
+                   
+
+                    string filename = prm[0];
+                    List<string> file_dir = new List<string>();
+                    files.TryGetValue(prm[0], out file_dir);
+                    filename = file_dir[0] + file_dir[1];
+
+                   
+                    if (prm[1] != "" && prm[1] != null)
+                    {
+
+                        try
+                        {
+                            worksheet_num = Int32.Parse(prm[1]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            worksheet_name = prm[1];
+                        }
+
+
+                    }
+
+                    var wb1 = new XLWorkbook(filename);
+
+                    var wb2 = new XLWorkbook();
+                    var ws2 = wb2.AddWorksheet("ДЗ_по_клиенту");
+
+                    IXLWorksheet ws;
+
+                    List<string> clients = new List<string>();
+
+                    if (prm[2].Contains(";"))
+                    { 
+                    
+                    clients.AddRange(prm[2].Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                    }
+                    else
+                    {
+                        clients.Add(prm[2]);
+                    }
+
+                    if (worksheet_name != "")
+                        ws = wb1.Worksheet(worksheet_name);
+                    else
+                        ws = wb1.Worksheet(worksheet_num);
+
+                    int total_rows = ws.RowsUsed().Count();
+                    int total_columns = ws.ColumnsUsed().Count();
+                    int first = ws.FirstRowUsed().RowNumber();
+
+                    int search_column = GetColumnByName(file_dir, prm[1], prm[3])[1];
+                    row_num = GetColumnByName(file_dir, prm[1], prm[3])[0];
+
+                    int new_row = 1;
+
+                    ws.Row(row_num).CopyTo(ws2.Row(new_row));
+                                      
+
+                    for (int i = 1; i < total_rows; i++)
+                    {
+                       
+                        for (int j = 1; j < total_columns; j++)
+                        {
+                          
+                            foreach(var client in clients)
+                            {
+                                if (i == 1346 && j == 10)
+                                {
+                                    ;
+                                }
+                                if (ws.Cell(i, j).Value.ToString().TrimEnd().TrimStart().ToUpper().Equals(client.ToString().TrimEnd().TrimStart().ToUpper()) == true)
+                                {
+                                    new_row++;
+                                    ws.Row(i).CopyTo(ws2.Row(new_row));
+                                }
+
+                            }
+                        }
+                    }
+
+                    wb2.SaveAs(file_dir[0] + prm[4] + ".xlsx");
+
+                    wb2.Dispose();
+
+                    wb1.Save();
+
+                    wb1.Dispose();
+
+                }
+
+                if (com.Equals("Сводная", StringComparison.InvariantCultureIgnoreCase)) // добавляем строку до столбца по номеру или до слолбца по названию
+                {
+
+                    string worksheet_name = "";
+                    int worksheet_num = 0;
+
+                    int column_num = 1;
+                    int row_num = 1;
+
+
+                    string filename = prm[0];
+                    List<string> file_dir = new List<string>();
+                    files.TryGetValue(prm[0], out file_dir);
+                    filename = file_dir[0] + file_dir[1];
+
+
+                    if (prm[1] != "" && prm[1] != null)
+                    {
+
+                        try
+                        {
+                            worksheet_num = Int32.Parse(prm[1]);
+
+                        }
+                        catch (FormatException)
+                        {
+                            worksheet_name = prm[1];
+                        }
+
+
+                    }
+
+                    var wb1 = new XLWorkbook(filename);                              
+
+                    IXLWorksheet ws;
+                    
+
+                    List<string> RowLabels = new List<string>(), ColumnLabels = new List<string>();
+
+                    if (prm[3].Contains(";"))
+                    {
+
+                        RowLabels.AddRange(prm[3].Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                    }
+                    else
+                    {
+                        RowLabels.Add(prm[3]);
+                    }
+                    if (prm[4].Contains(";"))
+                    {
+
+                        ColumnLabels.AddRange(prm[4].Split(";".ToCharArray(), StringSplitOptions.RemoveEmptyEntries));
+                    }
+                    else
+                    {
+                        ColumnLabels.Add(prm[4]);
+                    }
+
+                    if (worksheet_name != "")
+                        ws = wb1.Worksheet(worksheet_name);
+                    else
+                        ws = wb1.Worksheet(worksheet_num);
+
+                    int first_table_row = GetColumnByName(file_dir, prm[1], RowLabels[0])[0]; //вычисляем порядковый номер первой строки таблицы
+
+                    var source = ws.Range(first_table_row,1, ws.LastRowUsed().RowNumber(), ws.LastColumnUsed().ColumnNumber()).AsTable(); // формируем диапазон сводной талицы
+
+                    var range = source.DataRange;
+
+                    var header = ws.Range(first_table_row, 1, first_table_row, ws.LastColumnUsed().ColumnNumber()).AsTable();
+
+                    var dataRange = ws.Range(header.FirstCell(), range.LastCell());
+
+                    var name = prm[2];
+
+                    var wsPT = wb1.Worksheets.Add(name);
+                   
+                    var pt = wsPT.PivotTables.AddNew(name, wsPT.Cell(1, 1), source);
+                   
+                    pt.AutofitColumns = true;
+
+
+                    foreach(var rowlabel in RowLabels)
+                    pt.RowLabels.Add(rowlabel);
+
+                    foreach (var columlabel in ColumnLabels)
+                        pt.ColumnLabels.Add(columlabel);
+
+                    pt.Values.Add(prm[5]);
+
+
+
+                    wb1.Save();
+
+                    wb1.Dispose();
+
+                }
 
             }
 
@@ -2805,21 +3186,17 @@ namespace Зарплата
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            if (listBox2.Items.Count > 0)
-                 {
-                foreach(var item in listBox2.Items)
-                {
-                 List<string> lst= new List<string>();
+            
+                List<string> lst= new List<string>();
                 string line;
 
                 // Read the file and display it line by line.  
                 System.IO.StreamReader file =
-                    new System.IO.StreamReader(item.ToString(), Encoding.GetEncoding(1251));
+                    new System.IO.StreamReader(listBox2.SelectedItem.ToString(), Encoding.GetEncoding(1251));
 
                 while ((line = file.ReadLine()) != null)
                 lst.Add(line);
-                 
-              
+                          
 
                 file.Close();
 
@@ -2830,5 +3207,4 @@ namespace Зарплата
                 }
             }
         }
-    }
-}
+  
