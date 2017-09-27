@@ -1,0 +1,16 @@
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\Зарплата.exe.config
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\Зарплата.exe
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\Зарплата.pdb
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\ClosedXML.dll
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\FastMember.Signed.dll
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\ClosedXML.pdb
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\ClosedXML.xml
+C:\Users\kozlov.r\source\repos\TSK\bin\Release\DocumentFormat.OpenXml.xml
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.csproj.ResolveComReference.cache
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.Form1.resources
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.Properties.Resources.resources
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.csproj.GenerateResource.Cache
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.csproj.CoreCompileInputs.cache
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.exe
+C:\Users\kozlov.r\source\repos\TSK\obj\Release\Зарплата.pdb
